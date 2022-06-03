@@ -494,7 +494,6 @@ namespace Swift
             Randomize.Checked = Presets.rndchech;
             Lcpsslider.Value = Presets.sliderv;
             cpsdrop.Checked = Presets.cpsdcheck;
-            //lol
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Swift.Mods
 {
     class Core
     {
+        public static Random rnd = new Random();
         public static async void leftclick(IntPtr window, bool leftlock)
         {
             if (leftlock)
@@ -20,7 +21,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons == MouseButtons.Left)
                     {
                         PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(new Random().Next(10, 40));
+                        await Task.Delay(rnd.Next(10, 40));
                         PostMessage(window, 0x202, 0, 0);
                     }
                     else
@@ -37,7 +38,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons.ToString().Contains("Left"))
                     {
                         PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(new Random().Next(10, 40));
+                        await Task.Delay(rnd.Next(10, 40));
                         PostMessage(window, 0x202, 0, 0);
                     }
                     else
@@ -93,7 +94,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons == MouseButtons.Left)
                     {
                         PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(new Random().Next(1, 3));
+                        await Task.Delay(rnd.Next(1, 3));
                         PostMessage(window, 0x202, 0, 0);
                     }
                     else
@@ -110,7 +111,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons.ToString().Contains("Left"))
                     {
                         PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(new Random().Next(1, 3));
+                        await Task.Delay(rnd.Next(1, 3));
                         PostMessage(window, 0x202, 0, 0);
                     }
                     else
@@ -130,7 +131,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons == MouseButtons.Right)
                     {
                         PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(new Random().Next(10, 40));
+                        await Task.Delay(rnd.Next(10, 40));
                         PostMessage(window, 0x202, 0, 0);
                     }
                     else
@@ -147,7 +148,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons.ToString().Contains("Right"))
                     {
                         PostMessage(window, 0x204, 0, 0);
-                        await Task.Delay(new Random().Next(10, 40));
+                        await Task.Delay(rnd.Next(10, 40));
                         PostMessage(window, 0x205, 0, 0);
                     }
                     else
