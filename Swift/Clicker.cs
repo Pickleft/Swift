@@ -390,11 +390,11 @@ namespace Swift
         {
             if (blatant.Checked)
             {
-                Lcpsslider.Maximum = 52;
+                Rcpsslider.Maximum = 52;
             }
             else
             {
-                Lcpsslider.Maximum = 22;
+                Rcpsslider.Maximum = 22;
             }
         }
 
