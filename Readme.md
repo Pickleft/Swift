@@ -2,7 +2,8 @@
 
 Advanced AutoClicker For Minecraft Made In C#.
 * Discord Server : https://discord.gg/c7jbMDqbNy
-
+   * Support me By Pressing "Star" On Repo
+ 
 ## Features 
 
 * Clean GUI.
