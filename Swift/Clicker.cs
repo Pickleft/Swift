@@ -118,7 +118,7 @@ namespace Swift
             Process[] processes = Process.GetProcesses();
             foreach (Process pList in processes)
             {
-                if (pList.ProcessName.Contains("javaw") || pList.ProcessName.Contains("javah"))
+                if (pList.ProcessName.Contains("javaw") || pList.ProcessName.Contains("java")) // fixed typo
                 {
                     javah = pList.MainWindowHandle;
                 }
@@ -388,7 +388,7 @@ namespace Swift
 
         private void blatantr_CheckedChanged(object sender, EventArgs e)
         {
-            if (blatant.Checked)
+            if (blatantr.Checked)
             {
                 Rcpsslider.Maximum = 52;
             }
