@@ -359,13 +359,21 @@ namespace Swift
 
         private void Bind_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            if (Bind.Checked)
             {
-                Bind.Text = "[ Bind ]";
+                if (e.KeyCode == Keys.Escape)
+                {
+                    Bind.Text = "[ Bind ]";
+                }
+                else
+                {
+                    Bind.Text = $"[ {e.KeyCode} ]";
+                }
+                Bind.Checked = false;
             }
             else
             {
-                Bind.Text = $"[ {e.KeyCode} ]";
+                return; // cry abt it  wonder </3
             }
         }
 

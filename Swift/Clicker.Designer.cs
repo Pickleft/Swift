@@ -46,6 +46,7 @@
             this.Rcps = new System.Windows.Forms.Label();
             this.Rcpsslider = new ColorSlider.ColorSlider();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.apply = new Guna.UI2.WinForms.Guna2Button();
             this.statusleft = new Guna.UI2.WinForms.Guna2CheckBox();
             this.Bind = new Guna.UI2.WinForms.Guna2Button();
             this.lmblock = new Guna.UI2.WinForms.Guna2CheckBox();
@@ -59,7 +60,6 @@
             this.DC = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.tt = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             this.animate = new System.Windows.Forms.Timer(this.components);
-            this.mmc = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
@@ -251,6 +251,7 @@
             // 
             this.rbind.Animated = true;
             this.rbind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.rbind.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
             this.rbind.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.rbind.CheckedState.ForeColor = System.Drawing.Color.White;
             this.rbind.CheckedState.Parent = this.rbind;
@@ -441,7 +442,7 @@
             // guna2Panel3
             // 
             this.guna2Panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.guna2Panel3.Controls.Add(this.mmc);
+            this.guna2Panel3.Controls.Add(this.apply);
             this.guna2Panel3.Controls.Add(this.statusleft);
             this.guna2Panel3.Controls.Add(this.Bind);
             this.guna2Panel3.Controls.Add(this.lmblock);
@@ -461,6 +462,34 @@
             this.guna2Panel3.ShadowDecoration.Parent = this.guna2Panel3;
             this.guna2Panel3.Size = new System.Drawing.Size(250, 343);
             this.guna2Panel3.TabIndex = 1;
+            // 
+            // apply
+            // 
+            this.apply.Animated = true;
+            this.apply.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.apply.BorderRadius = 12;
+            this.apply.BorderThickness = 1;
+            this.apply.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.apply.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.apply.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.apply.CheckedState.Parent = this.apply;
+            this.apply.CustomImages.Parent = this.apply;
+            this.apply.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.apply.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apply.ForeColor = System.Drawing.Color.White;
+            this.apply.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.apply.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.apply.HoverState.ForeColor = System.Drawing.Color.White;
+            this.apply.HoverState.Parent = this.apply;
+            this.apply.Location = new System.Drawing.Point(159, 313);
+            this.apply.Margin = new System.Windows.Forms.Padding(5);
+            this.apply.Name = "apply";
+            this.apply.ShadowDecoration.Parent = this.apply;
+            this.apply.Size = new System.Drawing.Size(86, 25);
+            this.apply.TabIndex = 12;
+            this.apply.Text = "Apply Preset";
+            this.apply.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.apply.Click += new System.EventHandler(this.mmc_Click);
             // 
             // statusleft
             // 
@@ -488,6 +517,7 @@
             // 
             this.Bind.Animated = true;
             this.Bind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.Bind.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
             this.Bind.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
             this.Bind.CheckedState.ForeColor = System.Drawing.Color.White;
             this.Bind.CheckedState.Parent = this.Bind;
@@ -740,34 +770,6 @@
             this.animate.Interval = 1;
             this.animate.Tick += new System.EventHandler(this.animate_Tick);
             // 
-            // mmc
-            // 
-            this.mmc.Animated = true;
-            this.mmc.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.mmc.BorderRadius = 12;
-            this.mmc.BorderThickness = 1;
-            this.mmc.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.mmc.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
-            this.mmc.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.mmc.CheckedState.Parent = this.mmc;
-            this.mmc.CustomImages.Parent = this.mmc;
-            this.mmc.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.mmc.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mmc.ForeColor = System.Drawing.Color.White;
-            this.mmc.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.mmc.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
-            this.mmc.HoverState.ForeColor = System.Drawing.Color.White;
-            this.mmc.HoverState.Parent = this.mmc;
-            this.mmc.Location = new System.Drawing.Point(159, 313);
-            this.mmc.Margin = new System.Windows.Forms.Padding(5);
-            this.mmc.Name = "mmc";
-            this.mmc.ShadowDecoration.Parent = this.mmc;
-            this.mmc.Size = new System.Drawing.Size(86, 25);
-            this.mmc.TabIndex = 12;
-            this.mmc.Text = "Apply Preset";
-            this.mmc.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.mmc.Click += new System.EventHandler(this.mmc_Click);
-            // 
             // Clicker
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -825,7 +827,7 @@
         private Guna.UI2.WinForms.Guna2CheckBox cpsdrop;
         private ColorSlider.ColorSlider Lcpsslider;
         private ColorSlider.ColorSlider Rcpsslider;
-        private Guna.UI2.WinForms.Guna2Button mmc;
+        private Guna.UI2.WinForms.Guna2Button apply;
     }
 }
 
