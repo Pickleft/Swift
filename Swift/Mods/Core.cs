@@ -130,9 +130,9 @@ namespace Swift.Mods
                     await Task.Delay(70);
                     if (Control.MouseButtons == MouseButtons.Right)
                     {
-                        PostMessage(window, 0x201, 0, 0);
+                        PostMessage(window, 0x204, 0, 0);
                         await Task.Delay(rnd.Next(10, 40));
-                        PostMessage(window, 0x202, 0, 0);
+                        PostMessage(window, 0x205, 0, 0);
                     }
                     else
                     {
