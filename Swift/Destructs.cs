@@ -117,7 +117,7 @@ namespace Swift
 
         private void temp_CheckedChanged(object sender, EventArgs e)
         {
-            if (ClearPref.Checked)
+            if (temp.Checked)
             {
                 var dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Temp";
                 string[] files = Directory.GetFiles(dir);
