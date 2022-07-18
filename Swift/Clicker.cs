@@ -7,9 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using static Swift.Calls;
 using Swift.Mods;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace Swift
 {
@@ -32,7 +34,6 @@ namespace Swift
         System.Timers.Timer rightclicker = new System.Timers.Timer();
         System.Timers.Timer randomizer = new System.Timers.Timer();
         System.Timers.Timer drop = new System.Timers.Timer();
-        System.Timers.Timer keyreg = new System.Timers.Timer();
 
 
         public Clicker()
@@ -42,13 +43,10 @@ namespace Swift
             rightclicker.Elapsed += RightClickvent;
             randomizer.Elapsed += randomvent;
             drop.Elapsed += dropvent;
-            keyreg.Elapsed += keysevent;
-            keyreg.Enabled = true;
             InitializeComponent();
-            HotKeyManager.HotKeyPressed += new EventHandler<HotKeyEventArgs>(HotKeyManager_HotKeyPressed);
         }
 
-        public void HotKeyManager_HotKeyPressed(object sender, HotKeyEventArgs e)
+        protected override void WndProc(ref Message m)
         {
             try
             {
@@ -56,51 +54,59 @@ namespace Swift
                 {
                     if (Bind.Text != "[ ... ]")
                     {
+                        Calls.UnregisterHotKey(Handle, idofL);
                         Keys key = (Keys)new KeysConverter().ConvertFromString(Bind.Text.Trim('[', ']', ' '));
-                        if (e.Key == key)
-                        {
-                            if (clicker.Enabled == true)
-                            {
-                                clicker.Enabled = false;
-                                if (statusleft.InvokeRequired)
-                                {
-                                    statusleft.Invoke(new MethodInvoker(delegate { statusleft.Checked = false; }));
-                                }
-                            }
-                            else
-                            {
-                                clicker.Enabled = true;
-                                if (statusleft.InvokeRequired)
-                                {
-                                    statusleft.Invoke(new MethodInvoker(delegate { statusleft.Checked = true; }));
-                                }
-
-                            }
-                        }
+                        Calls.RegisterHotKey(Handle, 1, 0, (uint)key);
                     }
                 }
                 if (rbind.Text != "[ Bind ]")
                 {
                     if (rbind.Text != "[ ... ]")
                     {
+                        Calls.UnregisterHotKey(Handle, idofR);
                         Keys keyright = (Keys)new KeysConverter().ConvertFromString(rbind.Text.Trim('[', ']', ' '));
-                        if (e.Key == keyright)
+                        Calls.RegisterHotKey(Handle, 2, 0, (uint)keyright);
+                    }
+                }
+                if (m.Msg == 0x312)
+                {
+                    int id = m.WParam.ToInt32();
+                    if (id == 1)
+                    {
+                        if (clicker.Enabled == true)
                         {
-                            if (rightclicker.Enabled == true)
+                            clicker.Enabled = false;
+                            if (statusleft.InvokeRequired)
                             {
-                                rightclicker.Enabled = false;
-                                if (statusright.InvokeRequired)
-                                {
-                                    statusright.Invoke(new MethodInvoker(delegate { statusright.Checked = false; }));
-                                }
+                                statusleft.Invoke(new MethodInvoker(delegate { statusleft.Checked = false; }));
                             }
-                            else
+                        }
+                        else
+                        {
+                            clicker.Enabled = true;
+                            if (statusleft.InvokeRequired)
                             {
-                                rightclicker.Enabled = true;
-                                if (statusright.InvokeRequired)
-                                {
-                                    statusright.Invoke(new MethodInvoker(delegate { statusright.Checked = true; }));
-                                }
+                                statusleft.Invoke(new MethodInvoker(delegate { statusleft.Checked = true; }));
+                            }
+
+                        }
+                    }
+                    else if (id == 2)
+                    {
+                        if (rightclicker.Enabled == true)
+                        {
+                            rightclicker.Enabled = false;
+                            if (statusright.InvokeRequired)
+                            {
+                                statusright.Invoke(new MethodInvoker(delegate { statusright.Checked = false; }));
+                            }
+                        }
+                        else
+                        {
+                            rightclicker.Enabled = true;
+                            if (statusright.InvokeRequired)
+                            {
+                                statusright.Invoke(new MethodInvoker(delegate { statusright.Checked = true; }));
                             }
                         }
                     }
@@ -110,6 +116,7 @@ namespace Swift
             {
 
             }
+            base.WndProc(ref m);
         }
 
         private void Clickvent(object sender, System.Timers.ElapsedEventArgs e)
@@ -135,8 +142,9 @@ namespace Swift
             {
                 Core.leftclick(javah, leftlock);
             }
-
         }
+
+
         private void RightClickvent(object sender, System.Timers.ElapsedEventArgs e)
         {
             rightclicker.Interval = rightcps;
@@ -157,36 +165,6 @@ namespace Swift
                 Core.rightclick(javah, rightlock);
             }
         }
-
-        private void keysevent(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            try
-            {
-                if (Bind.Text != "[ Bind ]")
-                {
-                    if (Bind.Text != "[ ... ]")
-                    {
-                        HotKeyManager.UnregisterHotKey(idofL);
-                        Keys key = (Keys)new KeysConverter().ConvertFromString(Bind.Text.Trim('[', ']', ' '));
-                        idofL = HotKeyManager.RegisterHotKey(key, KeyModifiers.NoRepeat);
-                    }
-                }
-                if (rbind.Text != "[ Bind ]")
-                {
-                    if (rbind.Text != "[ ... ]")
-                    {
-                        HotKeyManager.UnregisterHotKey(idofR);
-                        Keys keyright = (Keys)new KeysConverter().ConvertFromString(rbind.Text.Trim('[', ']', ' '));
-                        idofR = HotKeyManager.RegisterHotKey(keyright, KeyModifiers.NoRepeat);
-                    }
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
 
         private void randomvent(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -355,9 +333,10 @@ namespace Swift
         private void Bind_Click(object sender, EventArgs e)
         {
             Bind.Text = "[ ... ]";
+            Bind.Checked = true;
         }
 
-        private void Bind_KeyDown(object sender, KeyEventArgs e)
+        private void Bind_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
             if (Bind.Checked)
             {
@@ -373,7 +352,7 @@ namespace Swift
             }
             else
             {
-                return; // cry abt it  wonder </3
+                return;
             }
         }
 
@@ -457,6 +436,7 @@ namespace Swift
         private void rbind_Click(object sender, EventArgs e)
         {
             rbind.Text = "[ ... ]";
+            rbind.Checked = true;
         }
 
         private void Rcpsslider_ValueChanged(object sender, EventArgs e)
@@ -466,15 +446,23 @@ namespace Swift
             rightcps = (double)(1000 / Rcpsslider.Value);
         }
 
-        private void rbind_KeyDown(object sender, KeyEventArgs e)
+        private void rbind_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            if (rbind.Checked)
             {
-                rbind.Text = "[ Bind ]";
+                if (e.KeyCode == Keys.Escape)
+                {
+                    rbind.Text = "[ Bind ]";
+                }
+                else
+                {
+                    rbind.Text = $"[ {e.KeyCode} ]";
+                }
+                rbind.Checked = false;
             }
             else
             {
-                rbind.Text = $"[ {e.KeyCode} ]";
+                return;
             }
         }
 

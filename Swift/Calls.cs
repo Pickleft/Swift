@@ -28,6 +28,11 @@ namespace Swift
         public static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
         [DllImport("dnsapi.dll", EntryPoint = "DnsFlushResolverCache")]
         public static extern UInt32 DnsFlushResolverCache();
+        [DllImport("user32", SetLastError = true)]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
+
+        [DllImport("user32", SetLastError = true)]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
 
         public static void restartservice()
         {
