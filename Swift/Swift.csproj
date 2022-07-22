@@ -257,6 +257,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Clicker.resx">
       <DependentUpon>Clicker.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Destructs.resx">
       <DependentUpon>Destructs.cs</DependentUpon>
