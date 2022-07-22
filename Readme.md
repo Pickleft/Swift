@@ -1,6 +1,7 @@
 # Swift
 
 Advanced AutoClicker For Minecraft Made In C#.
+* Website : http://getswift.tk/
 * Discord Server : https://discord.gg/c7jbMDqbNy
    * Star Repo To Support Me :)
     * The Missing Reference, To Debug (It's Safe. Use Dnspy To Check Source) : https://github.com/Pickleft/tools/blob/main/GunaUI-Key.rar?raw=true
@@ -33,8 +34,21 @@ Contributors names and contact info
 
 ## Version History
 
-* 0.1
+* 1.0
     * Initial Release
+* 1.1
+    * Some Major Fixes
+* 1.2
+    * Bug Fixes and compatibility issues
+* 1.3
+  * Core.cs :
+    * ~ Fixed RightClick.
+  * Clicker.cs
+    * ~ Simplified HotKey Management.
+    * ~ Deleted Old Class Of HotKeyManager.
+  * Destruct.cs
+    * ~ Improved Destruct.
+    * ~ Fixed Prefetch Clean.
 
 ## License
 
