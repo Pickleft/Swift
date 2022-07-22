@@ -12,6 +12,7 @@ using static Swift.Calls;
 using Swift.Mods;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Media;
 
 namespace Swift
 {
@@ -76,18 +77,12 @@ namespace Swift
                         if (clicker.Enabled == true)
                         {
                             clicker.Enabled = false;
-                            if (statusleft.InvokeRequired)
-                            {
-                                statusleft.Invoke(new MethodInvoker(delegate { statusleft.Checked = false; }));
-                            }
+                            statusleft.Checked = false;
                         }
                         else
                         {
                             clicker.Enabled = true;
-                            if (statusleft.InvokeRequired)
-                            {
-                                statusleft.Invoke(new MethodInvoker(delegate { statusleft.Checked = true; }));
-                            }
+                            statusleft.Checked = true;
 
                         }
                     }
@@ -96,18 +91,12 @@ namespace Swift
                         if (rightclicker.Enabled == true)
                         {
                             rightclicker.Enabled = false;
-                            if (statusright.InvokeRequired)
-                            {
-                                statusright.Invoke(new MethodInvoker(delegate { statusright.Checked = false; }));
-                            }
+                            statusright.Checked = false;
                         }
                         else
                         {
                             rightclicker.Enabled = true;
-                            if (statusright.InvokeRequired)
-                            {
-                                statusright.Invoke(new MethodInvoker(delegate { statusright.Checked = true; }));
-                            }
+                            statusright.Checked = true;
                         }
                     }
                 }
@@ -118,6 +107,7 @@ namespace Swift
             }
             base.WndProc(ref m);
         }
+        
 
         private void Clickvent(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -141,6 +131,7 @@ namespace Swift
             else
             {
                 Core.leftclick(javah, leftlock);
+                
             }
         }
 
