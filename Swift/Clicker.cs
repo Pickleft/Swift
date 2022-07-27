@@ -29,8 +29,8 @@ namespace Swift
         bool vermode;
         bool foodorrod;
         bool rightlock;
-        public int idofL;
-        public int idofR;
+        public int idofL = 1;
+        public int idofR = 2;
         System.Timers.Timer clicker = new System.Timers.Timer();
         System.Timers.Timer rightclicker = new System.Timers.Timer();
         System.Timers.Timer randomizer = new System.Timers.Timer();
