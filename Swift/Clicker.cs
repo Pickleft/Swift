@@ -107,7 +107,7 @@ namespace Swift
             }
             base.WndProc(ref m);
         }
-        
+
 
         private void Clickvent(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -131,7 +131,7 @@ namespace Swift
             else
             {
                 Core.leftclick(javah, leftlock);
-                
+
             }
         }
 
@@ -156,12 +156,12 @@ namespace Swift
                 Core.rightclick(javah, rightlock);
             }
         }
-
+        public static Random rnd = new Random(Guid.NewGuid().GetHashCode());
         private void randomvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            double randominterval = leftcps + new Random().Next(250, 500);
+            double randominterval = rnd.Next(550, 950);
             randomizer.Interval = randominterval;
-            int randomint = new Random().Next(-3, 12);
+            int randomint = rnd.Next(-3, 6);
             double rndcps = Mods.Randomize.rnddouble(randomint);
             leftcps = 1000 / (cps - rndcps);
         }
@@ -284,7 +284,7 @@ namespace Swift
             }
         }
 
-       
+
         private void cpsdrop_CheckedChanged(object sender, EventArgs e)
         {
             if (cpsdrop.Checked)

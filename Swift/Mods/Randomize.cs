@@ -8,12 +8,11 @@ namespace Swift.Mods
 {
     internal class Randomize
     {
+        static Random RND = new Random();
         public static double rnddouble(int max)
         {
-            Random RND = new Random();
-            double RNDD = RND.NextDouble() * (max * 7 / 9);
-            return RNDD;
+            double fixmax = RND.NextDouble() + max;
+            return fixmax;
         }
-
     }
 }
