@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
 using static Swift.Calls;
 using Swift.Mods;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
-using System.Media;
 
 namespace Swift
 {
@@ -34,7 +24,6 @@ namespace Swift
         System.Timers.Timer clicker = new System.Timers.Timer();
         System.Timers.Timer rightclicker = new System.Timers.Timer();
         System.Timers.Timer randomizer = new System.Timers.Timer();
-        System.Timers.Timer drop = new System.Timers.Timer();
 
 
         public Clicker()
@@ -43,7 +32,6 @@ namespace Swift
             clicker.Elapsed += Clickvent;
             rightclicker.Elapsed += RightClickvent;
             randomizer.Elapsed += randomvent;
-            drop.Elapsed += dropvent;
             InitializeComponent();
         }
 
@@ -156,31 +144,21 @@ namespace Swift
                 Core.rightclick(javah, rightlock);
             }
         }
-        public static Random rnd = new Random(Guid.NewGuid().GetHashCode());
+
+        public static Randomize random = new Randomize(Calls.RandomSeed);
+
         private void randomvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            double randominterval = rnd.Next(550, 950);
-            randomizer.Interval = randominterval;
-            int randomint = rnd.Next(-3, 6);
-            double rndcps = Mods.Randomize.rnddouble(randomint);
-            leftcps = 1000 / (cps - rndcps);
-        }
-
-        private void dropvent(object sender, System.Timers.ElapsedEventArgs e)
-        {
-            if (cpsdrop.Checked)
+            int chance = random.Rnd(0, 100);
+            if (chance < Calls.ChanceBoost)
             {
-                double randominterval = new Random().Next(500, 1500);
-                drop.Interval = randominterval;
-                int randomcps = new Random().Next(-2, 4);
-                leftcps = 1000 / (cps - randomcps);
+                int boost = random.Rnd(Calls.BoostMin, Calls.BoostMax);
+                leftcps = 1000 / (cps + boost);
             }
-            if (cpsdropright.Checked)
+            else
             {
-                double randominterval = new Random().Next(500, 1500);
-                drop.Interval = randominterval;
-                int randomcps = new Random().Next(-2, 4);
-                rightcps = 1000 / (_cps - randomcps);
+                int drop = random.Rnd(Calls.DropMin, Calls.DropMax);
+                leftcps = 1000 / (cps + drop);
             }
         }
 
@@ -284,18 +262,6 @@ namespace Swift
             }
         }
 
-
-        private void cpsdrop_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cpsdrop.Checked)
-            {
-                drop.Enabled = true;
-            }
-            else
-            {
-                drop.Enabled = false;
-            }
-        }
         private void mode_CheckedChanged(object sender, EventArgs e)
         {
             if (mode.Checked)
@@ -400,18 +366,6 @@ namespace Swift
             }
         }
 
-        private void cpsdropright_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cpsdropright.Checked)
-            {
-                drop.Enabled = true;
-            }
-            else
-            {
-                drop.Enabled = false;
-            }
-        }
-
         private void food_CheckedChanged(object sender, EventArgs e)
         {
             if (food.Checked)
@@ -476,11 +430,17 @@ namespace Swift
             KillService();
         }
 
-        private void mmc_Click(object sender, EventArgs e)
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Randomize.Checked = Presets.rndchech;
-            Lcpsslider.Value = Presets.sliderv;
-            cpsdrop.Checked = Presets.cpsdcheck;
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = true;
         }
     }
 }

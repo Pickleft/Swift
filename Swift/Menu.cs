@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows.Forms;
@@ -19,12 +14,13 @@ namespace Swift
         {
             InitializeComponent();
             guna2HtmlLabel4.Text = "Build N° : " + Assembly.GetExecutingAssembly().GetName().Version.Build;
+            guna2HtmlLabel5.Text = "Version : " + Assembly.GetExecutingAssembly().GetName().Version.ToString(2);
             this.Opacity = 0.95;
         }
 
         private void discord_DoubleClick(object sender, EventArgs e)
         {
-            Process.Start("https://Discord.gg/enDgttPKAW");
+            Process.Start("https://discord.gg/vTECNKcydU");
         }
 
         private void twitter_DoubleClick(object sender, EventArgs e)
@@ -116,26 +112,26 @@ namespace Swift
             {
                 if (newtitle.Length >= title.Length)
                 {
-                    guna2HtmlLabel1.ForeColor = Color.FromArgb(255, 27, 45);
+                    guna2HtmlLabel1.ForeColor = current_color;
                     await Task.Delay(400);
                     guna2HtmlLabel1.Text = guna2HtmlLabel1.Text.Insert(0, "★");
                     await Task.Delay(400);
                     newtitle = "";
                     i = 0;
                     guna2HtmlLabel1.ForeColor = Color.White;
-                    guna2HtmlLabel2.ForeColor = Color.FromArgb(255, 27, 45);
+                    guna2HtmlLabel2.ForeColor = current_color;
                     await Task.Delay(400);
                     guna2HtmlLabel2.ForeColor = Color.White;
-                    guna2HtmlLabel3.ForeColor = Color.FromArgb(255, 27, 45);
+                    guna2HtmlLabel3.ForeColor = current_color;
                     await Task.Delay(400);
                     guna2HtmlLabel3.ForeColor = Color.White;
-                    guna2HtmlLabel4.ForeColor = Color.FromArgb(255, 27, 45);
+                    guna2HtmlLabel4.ForeColor = current_color;
                     await Task.Delay(400);
                     guna2HtmlLabel4.ForeColor = Color.White;
-                    guna2HtmlLabel5.ForeColor = Color.FromArgb(255, 27, 45);
+                    guna2HtmlLabel5.ForeColor = current_color;
                     await Task.Delay(400);
                     guna2HtmlLabel5.ForeColor = Color.White;
-                    guna2HtmlLabel6.ForeColor = Color.FromArgb(255, 27, 45);
+                    guna2HtmlLabel6.ForeColor = current_color;
                     await Task.Delay(400);
                     guna2HtmlLabel6.ForeColor = Color.White;
                 }
@@ -178,6 +174,24 @@ namespace Swift
             D.Show();
             animate.Start();
             KillService();
+        }
+
+        private void discord_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = true;
         }
     }
 }

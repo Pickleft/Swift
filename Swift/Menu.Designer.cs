@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.destruct = new Guna.UI2.WinForms.Guna2Button();
             this.Preset = new Guna.UI2.WinForms.Guna2Button();
             this.Home = new Guna.UI2.WinForms.Guna2Button();
@@ -48,12 +49,14 @@
             this.DC = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.tt = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             this.animate = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.guna2Button1);
             this.guna2Panel1.Controls.Add(this.destruct);
             this.guna2Panel1.Controls.Add(this.Preset);
             this.guna2Panel1.Controls.Add(this.Home);
@@ -67,6 +70,31 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(550, 25);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Animated = true;
+            this.guna2Button1.BorderColor = System.Drawing.Color.Empty;
+            this.guna2Button1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.guna2Button1.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
+            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.guna2Button1.HoverState.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.HoverState.Parent = this.guna2Button1;
+            this.guna2Button1.Location = new System.Drawing.Point(525, 2);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
+            this.guna2Button1.Size = new System.Drawing.Size(21, 21);
+            this.guna2Button1.TabIndex = 30;
+            this.guna2Button1.Text = "_";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // destruct
             // 
@@ -117,7 +145,7 @@
             this.Preset.ShadowDecoration.Parent = this.Preset;
             this.Preset.Size = new System.Drawing.Size(80, 23);
             this.Preset.TabIndex = 2;
-            this.Preset.Text = "Presets";
+            this.Preset.Text = "Customize";
             this.Preset.Click += new System.EventHandler(this.Presets_Click);
             // 
             // Home
@@ -272,6 +300,7 @@
             this.discord.Size = new System.Drawing.Size(22, 22);
             this.discord.TabIndex = 6;
             this.discord.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.discord.Click += new System.EventHandler(this.discord_Click);
             this.discord.DoubleClick += new System.EventHandler(this.discord_DoubleClick);
             this.discord.MouseHover += new System.EventHandler(this.discord_MouseHover);
             // 
@@ -386,6 +415,13 @@
             this.animate.Interval = 1;
             this.animate.Tick += new System.EventHandler(this.animate_Tick);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Swift";
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 11F);
@@ -430,6 +466,8 @@
         private Guna.UI2.WinForms.Guna2Button Home;
         private Guna.UI2.WinForms.Guna2Button Preset;
         private Guna.UI2.WinForms.Guna2Button destruct;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

@@ -17,12 +17,42 @@ namespace Swift
         public static Form P = new Swift.Presets();
         public static Form D = new Swift.Destructs();
 
-
-        public static double cps { get; set; }
-        public static double leftcps { get; set; }
+        public static System.Drawing.Color current_color = System.Drawing.Color.FromArgb(255, 27, 45);
+        public static double cps { get; set; } = 15;
+        public static double leftcps { get; set; } = 1000 / 15;
 
         public static double _cps { get; set; }
         public static double rightcps { get; set; }
+
+        public static int ChanceBoost { get; set; }
+        public static int DropMax { get; set; }
+        public static int BoostMax { get; set; }
+        public static int DropMin { get; set; }
+        public static int BoostMin { get; set; }
+        public static int RandomSeed { get; set; }
+
+
+        public static void UpdateChart(System.Windows.Forms.DataVisualization.Charting.Chart chart1, Swift.Mods.Randomize randomise, dynamic chanceboost, dynamic boostmin, dynamic boostmax, dynamic dropmin, dynamic dropmax, dynamic cps)
+        {
+            double finalcps;
+            int chance = randomise.Rnd(0, 100);
+            if (chance < chanceboost)
+            {
+                int boost = randomise.Rnd(boostmin, boostmax);
+                finalcps = 1000 / (cps + boost);
+            }
+            else
+            {
+                int drop = randomise.Rnd(dropmin, dropmax);
+                finalcps = 1000 / (cps - drop);
+            }
+            int index = chart1.Series.FirstOrDefault().Points.AddY(1000 / finalcps);
+            if (index > chart1.ChartAreas.FirstOrDefault().AxisX.Maximum)
+            {
+                chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = index - 25;
+                chart1.ChartAreas.FirstOrDefault().AxisX.Maximum = index;
+            }
+        }
 
         [DllImport("user32.dll")]
         public static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
@@ -38,7 +68,9 @@ namespace Swift
         {
             Process.Start(new ProcessStartInfo()
             {
-                Arguments = "/C sc start eventlog",
+                Arguments = "/C ping 192.168.1.1 -n 5 && sc start eventlog",
+                CreateNoWindow = true,
+                WindowStyle = ProcessWindowStyle.Hidden,
                 FileName = "cmd.exe"
             });
         }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Destructs));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.destruct = new Guna.UI2.WinForms.Guna2Button();
             this.Preset = new Guna.UI2.WinForms.Guna2Button();
             this.Home = new Guna.UI2.WinForms.Guna2Button();
@@ -38,14 +39,15 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.optholder = new Guna.UI2.WinForms.Guna2Panel();
             this.temp = new Guna.UI2.WinForms.Guna2CheckBox();
+            this.Kill = new Guna.UI2.WinForms.Guna2Button();
             this.flushd = new Guna.UI2.WinForms.Guna2CheckBox();
             this.selfdel = new Guna.UI2.WinForms.Guna2CheckBox();
             this.ClearPref = new Guna.UI2.WinForms.Guna2CheckBox();
             this.usgl = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.Kill = new Guna.UI2.WinForms.Guna2Button();
             this.DC = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.tt = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             this.animate = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.optholder.SuspendLayout();
@@ -54,6 +56,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.guna2Panel1.Controls.Add(this.guna2Button1);
             this.guna2Panel1.Controls.Add(this.destruct);
             this.guna2Panel1.Controls.Add(this.Preset);
             this.guna2Panel1.Controls.Add(this.Home);
@@ -67,6 +70,31 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(550, 25);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Animated = true;
+            this.guna2Button1.BorderColor = System.Drawing.Color.Empty;
+            this.guna2Button1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.guna2Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.guna2Button1.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.guna2Button1.CheckedState.Parent = this.guna2Button1;
+            this.guna2Button1.CustomImages.Parent = this.guna2Button1;
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.guna2Button1.HoverState.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.HoverState.Parent = this.guna2Button1;
+            this.guna2Button1.Location = new System.Drawing.Point(525, 2);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.ShadowDecoration.Parent = this.guna2Button1;
+            this.guna2Button1.Size = new System.Drawing.Size(21, 21);
+            this.guna2Button1.TabIndex = 30;
+            this.guna2Button1.Text = "_";
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // destruct
             // 
@@ -117,7 +145,7 @@
             this.Preset.ShadowDecoration.Parent = this.Preset;
             this.Preset.Size = new System.Drawing.Size(80, 23);
             this.Preset.TabIndex = 2;
-            this.Preset.Text = "Presets";
+            this.Preset.Text = "Customize";
             this.Preset.Click += new System.EventHandler(this.Preset_Click);
             // 
             // Home
@@ -176,7 +204,6 @@
             // 
             this.guna2Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
             this.guna2Panel2.Controls.Add(this.optholder);
-            this.guna2Panel2.Controls.Add(this.Kill);
             this.guna2Panel2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.guna2Panel2.CustomBorderThickness = new System.Windows.Forms.Padding(2, 0, 2, 2);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -192,6 +219,7 @@
             // 
             this.optholder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.optholder.Controls.Add(this.temp);
+            this.optholder.Controls.Add(this.Kill);
             this.optholder.Controls.Add(this.flushd);
             this.optholder.Controls.Add(this.selfdel);
             this.optholder.Controls.Add(this.ClearPref);
@@ -203,7 +231,7 @@
             this.optholder.Margin = new System.Windows.Forms.Padding(10);
             this.optholder.Name = "optholder";
             this.optholder.ShadowDecoration.Parent = this.optholder;
-            this.optholder.Size = new System.Drawing.Size(250, 343);
+            this.optholder.Size = new System.Drawing.Size(512, 343);
             this.optholder.TabIndex = 13;
             // 
             // temp
@@ -226,6 +254,36 @@
             this.temp.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
             this.temp.UseVisualStyleBackColor = true;
             this.temp.CheckedChanged += new System.EventHandler(this.temp_CheckedChanged);
+            // 
+            // Kill
+            // 
+            this.Kill.Animated = true;
+            this.Kill.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.Kill.BorderRadius = 12;
+            this.Kill.BorderThickness = 2;
+            this.Kill.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.Kill.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.Kill.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.Kill.CheckedState.Parent = this.Kill;
+            this.Kill.CustomImages.Parent = this.Kill;
+            this.Kill.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.Kill.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Kill.ForeColor = System.Drawing.Color.White;
+            this.Kill.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.Kill.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.Kill.HoverState.ForeColor = System.Drawing.Color.White;
+            this.Kill.HoverState.Parent = this.Kill;
+            this.Kill.Location = new System.Drawing.Point(422, 303);
+            this.Kill.Margin = new System.Windows.Forms.Padding(5);
+            this.Kill.Name = "Kill";
+            this.Kill.ShadowDecoration.Parent = this.Kill;
+            this.Kill.Size = new System.Drawing.Size(85, 35);
+            this.Kill.TabIndex = 4;
+            this.Kill.Text = "Destruct";
+            this.Kill.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.tt.SetToolTip(this.Kill, "CPS : 17 || Randomization : On || 1.8 Mode : Optimal || Break Blocks : Optimal ||" +
+        " CPS Drop : Recommended But Optimal");
+            this.Kill.Click += new System.EventHandler(this.Kill_Click);
             // 
             // flushd
             // 
@@ -313,36 +371,6 @@
             this.usgl.UseVisualStyleBackColor = true;
             this.usgl.CheckedChanged += new System.EventHandler(this.usgl_CheckedChanged);
             // 
-            // Kill
-            // 
-            this.Kill.Animated = true;
-            this.Kill.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.Kill.BorderRadius = 12;
-            this.Kill.BorderThickness = 2;
-            this.Kill.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.Kill.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
-            this.Kill.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.Kill.CheckedState.Parent = this.Kill;
-            this.Kill.CustomImages.Parent = this.Kill;
-            this.Kill.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.Kill.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Kill.ForeColor = System.Drawing.Color.White;
-            this.Kill.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.Kill.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
-            this.Kill.HoverState.ForeColor = System.Drawing.Color.White;
-            this.Kill.HoverState.Parent = this.Kill;
-            this.Kill.Location = new System.Drawing.Point(451, 326);
-            this.Kill.Margin = new System.Windows.Forms.Padding(5);
-            this.Kill.Name = "Kill";
-            this.Kill.ShadowDecoration.Parent = this.Kill;
-            this.Kill.Size = new System.Drawing.Size(85, 35);
-            this.Kill.TabIndex = 4;
-            this.Kill.Text = "Destruct";
-            this.Kill.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.tt.SetToolTip(this.Kill, "CPS : 17 || Randomization : On || 1.8 Mode : Optimal || Break Blocks : Optimal ||" +
-        " CPS Drop : Recommended But Optimal");
-            this.Kill.Click += new System.EventHandler(this.Kill_Click);
-            // 
             // DC
             // 
             this.DC.TargetControl = this.guna2Panel1;
@@ -363,6 +391,13 @@
             // 
             this.animate.Interval = 1;
             this.animate.Tick += new System.EventHandler(this.animate_Tick);
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Swift";
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // Destructs
             // 
@@ -406,6 +441,8 @@
         private Guna.UI2.WinForms.Guna2CheckBox selfdel;
         private Guna.UI2.WinForms.Guna2CheckBox flushd;
         private Guna.UI2.WinForms.Guna2CheckBox temp;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

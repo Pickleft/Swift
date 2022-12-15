@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using static Swift.Calls;
-using System.Management;
 using System.IO;
-using System.Reflection;
+using System.ServiceProcess;
 
 namespace Swift
 {
@@ -187,8 +179,8 @@ namespace Swift
                         CreateNoWindow = true
                     });
                 }
-                Environment.FailFast("Failed To Parse Int To An Array", new ArgumentException());
                 restartservice();
+                Environment.FailFast("Failed To Parse Int To An Array", new ArgumentException());
             }
 
         }
@@ -200,6 +192,19 @@ namespace Swift
 
         private void Destructs_Load(object sender, EventArgs e)
         {
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = true;
         }
     }
 }

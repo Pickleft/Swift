@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Clicker));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.destruct = new Guna.UI2.WinForms.Guna2Button();
             this.Preset = new Guna.UI2.WinForms.Guna2Button();
             this.Home = new Guna.UI2.WinForms.Guna2Button();
@@ -40,17 +41,14 @@
             this.statusright = new Guna.UI2.WinForms.Guna2CheckBox();
             this.rbind = new Guna.UI2.WinForms.Guna2Button();
             this.rmblock = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.cpsdropright = new Guna.UI2.WinForms.Guna2CheckBox();
             this.blatantr = new Guna.UI2.WinForms.Guna2CheckBox();
             this.food = new Guna.UI2.WinForms.Guna2CheckBox();
             this.Rcps = new System.Windows.Forms.Label();
             this.Rcpsslider = new ColorSlider.ColorSlider();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.apply = new Guna.UI2.WinForms.Guna2Button();
             this.statusleft = new Guna.UI2.WinForms.Guna2CheckBox();
             this.Bind = new Guna.UI2.WinForms.Guna2Button();
             this.lmblock = new Guna.UI2.WinForms.Guna2CheckBox();
-            this.cpsdrop = new Guna.UI2.WinForms.Guna2CheckBox();
             this.blatant = new Guna.UI2.WinForms.Guna2CheckBox();
             this.mode = new Guna.UI2.WinForms.Guna2CheckBox();
             this.breakblock = new Guna.UI2.WinForms.Guna2CheckBox();
@@ -60,6 +58,7 @@
             this.DC = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.tt = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             this.animate = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
@@ -69,6 +68,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.guna2Panel1.Controls.Add(this.guna2Button2);
             this.guna2Panel1.Controls.Add(this.destruct);
             this.guna2Panel1.Controls.Add(this.Preset);
             this.guna2Panel1.Controls.Add(this.Home);
@@ -82,6 +82,31 @@
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(550, 25);
             this.guna2Panel1.TabIndex = 0;
+            // 
+            // guna2Button2
+            // 
+            this.guna2Button2.Animated = true;
+            this.guna2Button2.BorderColor = System.Drawing.Color.Empty;
+            this.guna2Button2.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.guna2Button2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.guna2Button2.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
+            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.guna2Button2.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.guna2Button2.HoverState.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.HoverState.Parent = this.guna2Button2;
+            this.guna2Button2.Location = new System.Drawing.Point(525, 2);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(5);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
+            this.guna2Button2.Size = new System.Drawing.Size(21, 21);
+            this.guna2Button2.TabIndex = 30;
+            this.guna2Button2.Text = "_";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // destruct
             // 
@@ -132,7 +157,7 @@
             this.Preset.ShadowDecoration.Parent = this.Preset;
             this.Preset.Size = new System.Drawing.Size(80, 23);
             this.Preset.TabIndex = 3;
-            this.Preset.Text = "Presets";
+            this.Preset.Text = "Customize";
             this.Preset.Click += new System.EventHandler(this.Preset_Click);
             // 
             // Home
@@ -210,7 +235,6 @@
             this.guna2Panel4.Controls.Add(this.statusright);
             this.guna2Panel4.Controls.Add(this.rbind);
             this.guna2Panel4.Controls.Add(this.rmblock);
-            this.guna2Panel4.Controls.Add(this.cpsdropright);
             this.guna2Panel4.Controls.Add(this.blatantr);
             this.guna2Panel4.Controls.Add(this.food);
             this.guna2Panel4.Controls.Add(this.Rcps);
@@ -233,7 +257,7 @@
             this.statusright.CheckedState.BorderThickness = 0;
             this.statusright.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
             this.statusright.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusright.Location = new System.Drawing.Point(5, 126);
+            this.statusright.Location = new System.Drawing.Point(5, 104);
             this.statusright.Margin = new System.Windows.Forms.Padding(1);
             this.statusright.Name = "statusright";
             this.statusright.Size = new System.Drawing.Size(122, 20);
@@ -278,7 +302,7 @@
             this.rmblock.CheckedState.BorderThickness = 0;
             this.rmblock.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
             this.rmblock.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rmblock.Location = new System.Drawing.Point(5, 104);
+            this.rmblock.Location = new System.Drawing.Point(5, 82);
             this.rmblock.Margin = new System.Windows.Forms.Padding(1);
             this.rmblock.Name = "rmblock";
             this.rmblock.Size = new System.Drawing.Size(122, 20);
@@ -293,28 +317,6 @@
             this.rmblock.UseVisualStyleBackColor = true;
             this.rmblock.CheckedChanged += new System.EventHandler(this.rmblock_CheckedChanged);
             // 
-            // cpsdropright
-            // 
-            this.cpsdropright.Animated = true;
-            this.cpsdropright.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.cpsdropright.CheckedState.BorderRadius = 3;
-            this.cpsdropright.CheckedState.BorderThickness = 0;
-            this.cpsdropright.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.cpsdropright.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpsdropright.Location = new System.Drawing.Point(5, 82);
-            this.cpsdropright.Margin = new System.Windows.Forms.Padding(1);
-            this.cpsdropright.Name = "cpsdropright";
-            this.cpsdropright.Size = new System.Drawing.Size(122, 20);
-            this.cpsdropright.TabIndex = 9;
-            this.cpsdropright.Text = "CPS Drop";
-            this.tt.SetToolTip(this.cpsdropright, "Randomally Drops Your Current CPS");
-            this.cpsdropright.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.cpsdropright.UncheckedState.BorderRadius = 1;
-            this.cpsdropright.UncheckedState.BorderThickness = 0;
-            this.cpsdropright.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.cpsdropright.UseVisualStyleBackColor = true;
-            this.cpsdropright.CheckedChanged += new System.EventHandler(this.cpsdropright_CheckedChanged);
-            // 
             // blatantr
             // 
             this.blatantr.Animated = true;
@@ -323,7 +325,7 @@
             this.blatantr.CheckedState.BorderThickness = 0;
             this.blatantr.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
             this.blatantr.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blatantr.Location = new System.Drawing.Point(5, 148);
+            this.blatantr.Location = new System.Drawing.Point(5, 126);
             this.blatantr.Margin = new System.Windows.Forms.Padding(1);
             this.blatantr.Name = "blatantr";
             this.blatantr.Size = new System.Drawing.Size(122, 20);
@@ -442,11 +444,9 @@
             // guna2Panel3
             // 
             this.guna2Panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.guna2Panel3.Controls.Add(this.apply);
             this.guna2Panel3.Controls.Add(this.statusleft);
             this.guna2Panel3.Controls.Add(this.Bind);
             this.guna2Panel3.Controls.Add(this.lmblock);
-            this.guna2Panel3.Controls.Add(this.cpsdrop);
             this.guna2Panel3.Controls.Add(this.blatant);
             this.guna2Panel3.Controls.Add(this.mode);
             this.guna2Panel3.Controls.Add(this.breakblock);
@@ -463,34 +463,6 @@
             this.guna2Panel3.Size = new System.Drawing.Size(250, 343);
             this.guna2Panel3.TabIndex = 1;
             // 
-            // apply
-            // 
-            this.apply.Animated = true;
-            this.apply.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.apply.BorderRadius = 12;
-            this.apply.BorderThickness = 1;
-            this.apply.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.apply.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
-            this.apply.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.apply.CheckedState.Parent = this.apply;
-            this.apply.CustomImages.Parent = this.apply;
-            this.apply.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.apply.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apply.ForeColor = System.Drawing.Color.White;
-            this.apply.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.apply.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
-            this.apply.HoverState.ForeColor = System.Drawing.Color.White;
-            this.apply.HoverState.Parent = this.apply;
-            this.apply.Location = new System.Drawing.Point(159, 313);
-            this.apply.Margin = new System.Windows.Forms.Padding(5);
-            this.apply.Name = "apply";
-            this.apply.ShadowDecoration.Parent = this.apply;
-            this.apply.Size = new System.Drawing.Size(86, 25);
-            this.apply.TabIndex = 12;
-            this.apply.Text = "Apply Preset";
-            this.apply.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.apply.Click += new System.EventHandler(this.mmc_Click);
-            // 
             // statusleft
             // 
             this.statusleft.Animated = true;
@@ -499,7 +471,7 @@
             this.statusleft.CheckedState.BorderThickness = 0;
             this.statusleft.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
             this.statusleft.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusleft.Location = new System.Drawing.Point(5, 170);
+            this.statusleft.Location = new System.Drawing.Point(5, 148);
             this.statusleft.Margin = new System.Windows.Forms.Padding(1);
             this.statusleft.Name = "statusleft";
             this.statusleft.Size = new System.Drawing.Size(122, 20);
@@ -544,7 +516,7 @@
             this.lmblock.CheckedState.BorderThickness = 0;
             this.lmblock.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
             this.lmblock.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lmblock.Location = new System.Drawing.Point(5, 148);
+            this.lmblock.Location = new System.Drawing.Point(5, 126);
             this.lmblock.Margin = new System.Windows.Forms.Padding(1);
             this.lmblock.Name = "lmblock";
             this.lmblock.Size = new System.Drawing.Size(122, 20);
@@ -559,28 +531,6 @@
             this.lmblock.UseVisualStyleBackColor = true;
             this.lmblock.CheckedChanged += new System.EventHandler(this.lmblock_CheckedChanged);
             // 
-            // cpsdrop
-            // 
-            this.cpsdrop.Animated = true;
-            this.cpsdrop.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.cpsdrop.CheckedState.BorderRadius = 3;
-            this.cpsdrop.CheckedState.BorderThickness = 0;
-            this.cpsdrop.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.cpsdrop.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cpsdrop.Location = new System.Drawing.Point(5, 104);
-            this.cpsdrop.Margin = new System.Windows.Forms.Padding(1);
-            this.cpsdrop.Name = "cpsdrop";
-            this.cpsdrop.Size = new System.Drawing.Size(122, 20);
-            this.cpsdrop.TabIndex = 9;
-            this.cpsdrop.Text = "CPS Drop";
-            this.tt.SetToolTip(this.cpsdrop, "Randomally Drops Your Current CPS");
-            this.cpsdrop.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.cpsdrop.UncheckedState.BorderRadius = 1;
-            this.cpsdrop.UncheckedState.BorderThickness = 0;
-            this.cpsdrop.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.cpsdrop.UseVisualStyleBackColor = true;
-            this.cpsdrop.CheckedChanged += new System.EventHandler(this.cpsdrop_CheckedChanged);
-            // 
             // blatant
             // 
             this.blatant.Animated = true;
@@ -589,7 +539,7 @@
             this.blatant.CheckedState.BorderThickness = 0;
             this.blatant.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
             this.blatant.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.blatant.Location = new System.Drawing.Point(5, 192);
+            this.blatant.Location = new System.Drawing.Point(5, 170);
             this.blatant.Margin = new System.Windows.Forms.Padding(1);
             this.blatant.Name = "blatant";
             this.blatant.Size = new System.Drawing.Size(122, 20);
@@ -611,7 +561,7 @@
             this.mode.CheckedState.BorderThickness = 0;
             this.mode.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
             this.mode.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mode.Location = new System.Drawing.Point(5, 126);
+            this.mode.Location = new System.Drawing.Point(5, 104);
             this.mode.Margin = new System.Windows.Forms.Padding(1);
             this.mode.Name = "mode";
             this.mode.Size = new System.Drawing.Size(122, 20);
@@ -770,6 +720,13 @@
             this.animate.Interval = 1;
             this.animate.Tick += new System.EventHandler(this.animate_Tick);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Swift";
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // Clicker
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -817,17 +774,16 @@
         private Guna.UI2.WinForms.Guna2CheckBox statusright;
         private Guna.UI2.WinForms.Guna2Button rbind;
         private Guna.UI2.WinForms.Guna2CheckBox rmblock;
-        private Guna.UI2.WinForms.Guna2CheckBox cpsdropright;
         private Guna.UI2.WinForms.Guna2CheckBox blatantr;
         private Guna.UI2.WinForms.Guna2CheckBox food;
         private System.Windows.Forms.Label Rcps;
         private Guna.UI2.WinForms.Guna2Button Preset;
         private Guna.UI2.WinForms.Guna2Button destruct;
         private Guna.UI2.WinForms.Guna2CheckBox Randomize;
-        private Guna.UI2.WinForms.Guna2CheckBox cpsdrop;
         private ColorSlider.ColorSlider Lcpsslider;
         private ColorSlider.ColorSlider Rcpsslider;
-        private Guna.UI2.WinForms.Guna2Button apply;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

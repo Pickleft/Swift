@@ -6,13 +6,19 @@ using System.Threading.Tasks;
 
 namespace Swift.Mods
 {
-    internal class Randomize
+    public class Randomize
     {
-        static Random RND = new Random();
-        public static double rnddouble(int max)
+        public static Random C_Random { get; protected set; }
+        public int Seed { get; protected set; }
+        public Randomize(int seed)
         {
-            double fixmax = RND.NextDouble() + max;
-            return fixmax;
+            C_Random = new Random(seed);
+            Seed = seed;
+        }
+
+        public int Rnd(dynamic min, dynamic max)
+        {
+            return C_Random.Next((int)(min), (int)(max));
         }
     }
 }
