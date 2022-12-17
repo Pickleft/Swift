@@ -2,6 +2,7 @@
 
 Advanced AutoClicker For Minecraft Made In C#.
 * Website : http://getswift.tk/
+* JOIN THE DISCORD FOR CONFIGS.
 * Discord Server : https://discord.gg/c7jbMDqbNy
    * Star Repo To Support Me :)
     * The Missing Reference, To Debug (It's Safe. Use Dnspy To Check Source) : https://github.com/Pickleft/tools/blob/main/GunaUI-Key.rar?raw=true
