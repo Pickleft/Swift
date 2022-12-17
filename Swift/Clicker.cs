@@ -149,6 +149,7 @@ namespace Swift
 
         private void randomvent(object sender, System.Timers.ElapsedEventArgs e)
         {
+            randomizer.Interval = random.Rnd(500, 750);
             int chance = random.Rnd(0, 100);
             if (chance < Calls.ChanceBoost)
             {

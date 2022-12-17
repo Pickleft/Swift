@@ -14,7 +14,7 @@ namespace Swift
         {
             InitializeComponent();
             guna2HtmlLabel4.Text = "Build N° : " + Assembly.GetExecutingAssembly().GetName().Version.Build;
-            guna2HtmlLabel5.Text = "Version : " + Assembly.GetExecutingAssembly().GetName().Version.ToString(2);
+            guna2HtmlLabel5.Text = "Version : " + Process.GetCurrentProcess().MainModule.FileVersionInfo.FileVersion;
             this.Opacity = 0.95;
         }
 
