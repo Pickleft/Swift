@@ -50,6 +50,18 @@ Contributors names and contact info
   * Destruct.cs
     * ~ Improved Destruct.
     * ~ Fixed Prefetch Clean.
+* 1.4
+  * Clicker.cs
+    * ~ Updated static randomization to custom randomization.
+    * ~ Deleted Old Randomization
+  * Randomize.cs
+    * ~ New Randomization.
+    * ~ Deleted Old Randomization
+  * Presets.cs
+    * ~ Update Randomization presets and style.
+    * ~ Added Custom Rand.
+    * ~ Added GUI Control.
+
 
 ## License
 
