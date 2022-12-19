@@ -21,7 +21,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons == MouseButtons.Left)
                     {
                         PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(rnd.Next(1, 15));
+                        await Task.Delay(rnd.Next(1, 45));
                         PostMessage(window, 0x202, 0, 0);
                     }
                     else
@@ -38,7 +38,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons.ToString().Contains("Left"))
                     {
                         PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(rnd.Next(1, 15));
+                        await Task.Delay(rnd.Next(1, 45));
                         PostMessage(window, 0x202, 0, 0);
                     }
                     else
@@ -131,7 +131,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons == MouseButtons.Right)
                     {
                         PostMessage(window, 0x204, 0, 0);
-                        await Task.Delay(rnd.Next(1, 15));
+                        await Task.Delay(rnd.Next(1, 45));
                         PostMessage(window, 0x205, 0, 0);
                     }
                     else
@@ -148,7 +148,7 @@ namespace Swift.Mods
                     if (Control.MouseButtons.ToString().Contains("Right"))
                     {
                         PostMessage(window, 0x204, 0, 0);
-                        await Task.Delay(rnd.Next(1, 15));
+                        await Task.Delay(rnd.Next(1, 45));
                         PostMessage(window, 0x205, 0, 0);
                     }
                     else
