@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Presets));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
@@ -41,17 +41,8 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.CustomUIbutton = new Guna.UI2.WinForms.Guna2Button();
             this.CustomPresetButton = new Guna.UI2.WinForms.Guna2Button();
-            this.paneluserinterface = new Guna.UI2.WinForms.Guna2Panel();
-            this.preview_label = new System.Windows.Forms.Label();
-            this.previewpanel = new System.Windows.Forms.Panel();
-            this.applyui = new Guna.UI2.WinForms.Guna2Button();
-            this.green_label = new System.Windows.Forms.Label();
-            this.green_slider = new ColorSlider.ColorSlider();
-            this.blue_label = new System.Windows.Forms.Label();
-            this.blue_slider = new ColorSlider.ColorSlider();
-            this.red_label = new System.Windows.Forms.Label();
-            this.red_slider = new ColorSlider.ColorSlider();
             this._presetpanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.LoadConfingBtn = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
             this.labeldropmax = new System.Windows.Forms.Label();
             this.dropminslider = new ColorSlider.ColorSlider();
@@ -67,6 +58,16 @@
             this.dropmaxslider = new ColorSlider.ColorSlider();
             this.labelboostmax = new System.Windows.Forms.Label();
             this.boostmaxslider = new ColorSlider.ColorSlider();
+            this.paneluserinterface = new Guna.UI2.WinForms.Guna2Panel();
+            this.preview_label = new System.Windows.Forms.Label();
+            this.previewpanel = new System.Windows.Forms.Panel();
+            this.applyui = new Guna.UI2.WinForms.Guna2Button();
+            this.green_label = new System.Windows.Forms.Label();
+            this.green_slider = new ColorSlider.ColorSlider();
+            this.blue_label = new System.Windows.Forms.Label();
+            this.blue_slider = new ColorSlider.ColorSlider();
+            this.red_label = new System.Windows.Forms.Label();
+            this.red_slider = new ColorSlider.ColorSlider();
             this.DC = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.tt = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             this.animate = new System.Windows.Forms.Timer(this.components);
@@ -74,9 +75,9 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
-            this.paneluserinterface.SuspendLayout();
             this._presetpanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.paneluserinterface.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -232,8 +233,8 @@
             this.guna2Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
             this.guna2Panel2.Controls.Add(this.CustomUIbutton);
             this.guna2Panel2.Controls.Add(this.CustomPresetButton);
-            this.guna2Panel2.Controls.Add(this.paneluserinterface);
             this.guna2Panel2.Controls.Add(this._presetpanel);
+            this.guna2Panel2.Controls.Add(this.paneluserinterface);
             this.guna2Panel2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.guna2Panel2.CustomBorderThickness = new System.Windows.Forms.Padding(2, 0, 2, 2);
             this.guna2Panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -304,6 +305,651 @@
             this.tt.SetToolTip(this.CustomPresetButton, "CPS : 17 || Randomization : On || 1.8 Mode : Optimal || Break Blocks : Optimal ||" +
         " CPS Drop : Recommended But Optimal");
             this.CustomPresetButton.Click += new System.EventHandler(this.CustomPresetButton_Click);
+            // 
+            // _presetpanel
+            // 
+            this._presetpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this._presetpanel.Controls.Add(this.LoadConfingBtn);
+            this._presetpanel.Controls.Add(this.label2);
+            this._presetpanel.Controls.Add(this.labeldropmax);
+            this._presetpanel.Controls.Add(this.dropminslider);
+            this._presetpanel.Controls.Add(this.labelboostmin);
+            this._presetpanel.Controls.Add(this.boostminslider);
+            this._presetpanel.Controls.Add(this.chart1);
+            this._presetpanel.Controls.Add(this.randomseedslider);
+            this._presetpanel.Controls.Add(this.labelrandomseed);
+            this._presetpanel.Controls.Add(this.apply);
+            this._presetpanel.Controls.Add(this.labelchanceboost);
+            this._presetpanel.Controls.Add(this.chanceboostslider);
+            this._presetpanel.Controls.Add(this.labeldripmax);
+            this._presetpanel.Controls.Add(this.dropmaxslider);
+            this._presetpanel.Controls.Add(this.labelboostmax);
+            this._presetpanel.Controls.Add(this.boostmaxslider);
+            this._presetpanel.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this._presetpanel.CustomBorderThickness = new System.Windows.Forms.Padding(2);
+            this._presetpanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this._presetpanel.Location = new System.Drawing.Point(10, 39);
+            this._presetpanel.Margin = new System.Windows.Forms.Padding(10);
+            this._presetpanel.Name = "_presetpanel";
+            this._presetpanel.ShadowDecoration.Parent = this._presetpanel;
+            this._presetpanel.Size = new System.Drawing.Size(530, 326);
+            this._presetpanel.TabIndex = 3;
+            this._presetpanel.Visible = false;
+            // 
+            // LoadConfingBtn
+            // 
+            this.LoadConfingBtn.Animated = true;
+            this.LoadConfingBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.LoadConfingBtn.BorderRadius = 12;
+            this.LoadConfingBtn.BorderThickness = 1;
+            this.LoadConfingBtn.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.LoadConfingBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.LoadConfingBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.LoadConfingBtn.CheckedState.Parent = this.LoadConfingBtn;
+            this.LoadConfingBtn.CustomImages.Parent = this.LoadConfingBtn;
+            this.LoadConfingBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.LoadConfingBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadConfingBtn.ForeColor = System.Drawing.Color.White;
+            this.LoadConfingBtn.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.LoadConfingBtn.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.LoadConfingBtn.HoverState.ForeColor = System.Drawing.Color.White;
+            this.LoadConfingBtn.HoverState.Parent = this.LoadConfingBtn;
+            this.LoadConfingBtn.Location = new System.Drawing.Point(5, 147);
+            this.LoadConfingBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.LoadConfingBtn.Name = "LoadConfingBtn";
+            this.LoadConfingBtn.ShadowDecoration.Parent = this.LoadConfingBtn;
+            this.LoadConfingBtn.Size = new System.Drawing.Size(86, 25);
+            this.LoadConfingBtn.TabIndex = 21;
+            this.LoadConfingBtn.Text = "Load Config";
+            this.LoadConfingBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.LoadConfingBtn.Click += new System.EventHandler(this.LoadConfingBtn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(8, 182);
+            this.label2.Margin = new System.Windows.Forms.Padding(5);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 13);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Stats : ";
+            // 
+            // labeldropmax
+            // 
+            this.labeldropmax.AutoSize = true;
+            this.labeldropmax.BackColor = System.Drawing.Color.Transparent;
+            this.labeldropmax.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labeldropmax.Location = new System.Drawing.Point(6, 74);
+            this.labeldropmax.Margin = new System.Windows.Forms.Padding(5);
+            this.labeldropmax.Name = "labeldropmax";
+            this.labeldropmax.Size = new System.Drawing.Size(65, 13);
+            this.labeldropmax.TabIndex = 19;
+            this.labeldropmax.Text = "Drop Min : ";
+            // 
+            // dropminslider
+            // 
+            this.dropminslider.BackColor = System.Drawing.Color.Transparent;
+            this.dropminslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.dropminslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.dropminslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.dropminslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.dropminslider.DrawSemitransparentThumb = false;
+            this.dropminslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropminslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropminslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropminslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.dropminslider.ForeColor = System.Drawing.Color.White;
+            this.dropminslider.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dropminslider.Location = new System.Drawing.Point(98, 74);
+            this.dropminslider.Margin = new System.Windows.Forms.Padding(5);
+            this.dropminslider.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.dropminslider.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.dropminslider.MouseEffects = false;
+            this.dropminslider.Name = "dropminslider";
+            this.dropminslider.ScaleDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dropminslider.ScaleSubDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dropminslider.ShowDivisionsText = false;
+            this.dropminslider.ShowSmallScale = false;
+            this.dropminslider.Size = new System.Drawing.Size(88, 17);
+            this.dropminslider.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dropminslider.TabIndex = 18;
+            this.dropminslider.Text = "colorSlider5";
+            this.dropminslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropminslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropminslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropminslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
+            this.dropminslider.ThumbSize = new System.Drawing.Size(12, 12);
+            this.dropminslider.TickAdd = 0F;
+            this.dropminslider.TickColor = System.Drawing.Color.White;
+            this.dropminslider.TickDivide = 0F;
+            this.dropminslider.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.dropminslider.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.dropminslider.ValueChanged += new System.EventHandler(this.dropminslider_ValueChanged);
+            // 
+            // labelboostmin
+            // 
+            this.labelboostmin.AutoSize = true;
+            this.labelboostmin.BackColor = System.Drawing.Color.Transparent;
+            this.labelboostmin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelboostmin.Location = new System.Drawing.Point(6, 51);
+            this.labelboostmin.Margin = new System.Windows.Forms.Padding(5);
+            this.labelboostmin.Name = "labelboostmin";
+            this.labelboostmin.Size = new System.Drawing.Size(68, 13);
+            this.labelboostmin.TabIndex = 17;
+            this.labelboostmin.Text = "Boost Min : ";
+            // 
+            // boostminslider
+            // 
+            this.boostminslider.BackColor = System.Drawing.Color.Transparent;
+            this.boostminslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.boostminslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.boostminslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.boostminslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.boostminslider.DrawSemitransparentThumb = false;
+            this.boostminslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostminslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostminslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostminslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.boostminslider.ForeColor = System.Drawing.Color.White;
+            this.boostminslider.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.boostminslider.Location = new System.Drawing.Point(98, 51);
+            this.boostminslider.Margin = new System.Windows.Forms.Padding(5);
+            this.boostminslider.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.boostminslider.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.boostminslider.MouseEffects = false;
+            this.boostminslider.Name = "boostminslider";
+            this.boostminslider.ScaleDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.boostminslider.ScaleSubDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.boostminslider.ShowDivisionsText = false;
+            this.boostminslider.ShowSmallScale = false;
+            this.boostminslider.Size = new System.Drawing.Size(88, 17);
+            this.boostminslider.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.boostminslider.TabIndex = 16;
+            this.boostminslider.Text = "colorSlider1";
+            this.boostminslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostminslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostminslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostminslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
+            this.boostminslider.ThumbSize = new System.Drawing.Size(12, 12);
+            this.boostminslider.TickAdd = 0F;
+            this.boostminslider.TickColor = System.Drawing.Color.White;
+            this.boostminslider.TickDivide = 0F;
+            this.boostminslider.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.boostminslider.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.boostminslider.ValueChanged += new System.EventHandler(this.boostminslider_ValueChanged);
+            // 
+            // chart1
+            // 
+            this.chart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.chart1.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            this.chart1.BorderlineWidth = 0;
+            this.chart1.BorderSkin.BorderColor = System.Drawing.Color.Gray;
+            this.chart1.BorderSkin.PageColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            chartArea6.AxisX.InterlacedColor = System.Drawing.Color.Gray;
+            chartArea6.AxisX.Interval = 1D;
+            chartArea6.AxisX.LabelAutoFitMaxFontSize = 6;
+            chartArea6.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Gray;
+            chartArea6.AxisX.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea6.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisX.MajorTickMark.LineWidth = 0;
+            chartArea6.AxisX.MajorTickMark.Size = 0F;
+            chartArea6.AxisX.Maximum = 25D;
+            chartArea6.AxisX.MaximumAutoSize = 1F;
+            chartArea6.AxisX.Minimum = 0D;
+            chartArea6.AxisX.MinorGrid.LineWidth = 0;
+            chartArea6.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisX.MinorTickMark.LineWidth = 0;
+            chartArea6.AxisX.MinorTickMark.Size = 0F;
+            chartArea6.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisX.TitleForeColor = System.Drawing.Color.Gray;
+            chartArea6.AxisY.Interval = 1D;
+            chartArea6.AxisY.LabelStyle.ForeColor = System.Drawing.Color.Gray;
+            chartArea6.AxisY.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea6.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisY.MajorTickMark.LineWidth = 0;
+            chartArea6.AxisY.MajorTickMark.Size = 0F;
+            chartArea6.AxisY.Maximum = 25D;
+            chartArea6.AxisY.Minimum = 10D;
+            chartArea6.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisY.MinorGrid.LineWidth = 0;
+            chartArea6.AxisY.MinorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea6.AxisY.MinorTickMark.LineWidth = 0;
+            chartArea6.AxisY.MinorTickMark.Size = 0F;
+            chartArea6.AxisY.TitleForeColor = System.Drawing.Color.Gray;
+            chartArea6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            chartArea6.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            chartArea6.BorderColor = System.Drawing.Color.Gray;
+            chartArea6.Name = "ChartArea1";
+            chartArea6.ShadowColor = System.Drawing.Color.Gray;
+            this.chart1.ChartAreas.Add(chartArea6);
+            this.chart1.Location = new System.Drawing.Point(192, 5);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chart1.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.DeepSkyBlue};
+            series6.BorderColor = System.Drawing.Color.Red;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series6.EmptyPointStyle.LabelForeColor = System.Drawing.Color.Gray;
+            series6.LabelForeColor = System.Drawing.Color.Gray;
+            series6.Legend = "Legend1";
+            series6.Name = "Series1";
+            series6.XValueMember = "10";
+            series6.YValueMembers = "10";
+            this.chart1.Series.Add(series6);
+            this.chart1.Size = new System.Drawing.Size(326, 308);
+            this.chart1.TabIndex = 10;
+            this.chart1.Text = "chart1";
+            this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            // 
+            // randomseedslider
+            // 
+            this.randomseedslider.BackColor = System.Drawing.Color.Transparent;
+            this.randomseedslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.randomseedslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.randomseedslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.randomseedslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.randomseedslider.DrawSemitransparentThumb = false;
+            this.randomseedslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.randomseedslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.randomseedslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.randomseedslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.randomseedslider.ForeColor = System.Drawing.Color.White;
+            this.randomseedslider.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomseedslider.Location = new System.Drawing.Point(99, 120);
+            this.randomseedslider.Margin = new System.Windows.Forms.Padding(5);
+            this.randomseedslider.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.randomseedslider.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.randomseedslider.MouseEffects = false;
+            this.randomseedslider.Name = "randomseedslider";
+            this.randomseedslider.ScaleDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomseedslider.ScaleSubDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomseedslider.ShowDivisionsText = false;
+            this.randomseedslider.ShowSmallScale = false;
+            this.randomseedslider.Size = new System.Drawing.Size(88, 17);
+            this.randomseedslider.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.randomseedslider.TabIndex = 15;
+            this.randomseedslider.Text = "colorSlider4";
+            this.randomseedslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.randomseedslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.randomseedslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.randomseedslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
+            this.randomseedslider.ThumbSize = new System.Drawing.Size(12, 12);
+            this.randomseedslider.TickAdd = 0F;
+            this.randomseedslider.TickColor = System.Drawing.Color.White;
+            this.randomseedslider.TickDivide = 0F;
+            this.randomseedslider.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.randomseedslider.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.randomseedslider.ValueChanged += new System.EventHandler(this.randomseedslider_ValueChanged);
+            // 
+            // labelrandomseed
+            // 
+            this.labelrandomseed.AutoSize = true;
+            this.labelrandomseed.BackColor = System.Drawing.Color.Transparent;
+            this.labelrandomseed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelrandomseed.Location = new System.Drawing.Point(6, 120);
+            this.labelrandomseed.Margin = new System.Windows.Forms.Padding(5);
+            this.labelrandomseed.Name = "labelrandomseed";
+            this.labelrandomseed.Size = new System.Drawing.Size(79, 13);
+            this.labelrandomseed.TabIndex = 14;
+            this.labelrandomseed.Text = "Random-Seed";
+            // 
+            // apply
+            // 
+            this.apply.Animated = true;
+            this.apply.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.apply.BorderRadius = 12;
+            this.apply.BorderThickness = 1;
+            this.apply.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.apply.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.apply.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.apply.CheckedState.Parent = this.apply;
+            this.apply.CustomImages.Parent = this.apply;
+            this.apply.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.apply.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apply.ForeColor = System.Drawing.Color.White;
+            this.apply.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.apply.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.apply.HoverState.ForeColor = System.Drawing.Color.White;
+            this.apply.HoverState.Parent = this.apply;
+            this.apply.Location = new System.Drawing.Point(98, 147);
+            this.apply.Margin = new System.Windows.Forms.Padding(5);
+            this.apply.Name = "apply";
+            this.apply.ShadowDecoration.Parent = this.apply;
+            this.apply.Size = new System.Drawing.Size(86, 25);
+            this.apply.TabIndex = 13;
+            this.apply.Text = "Check Seed";
+            this.apply.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.apply.Click += new System.EventHandler(this.apply_Click);
+            // 
+            // labelchanceboost
+            // 
+            this.labelchanceboost.AutoSize = true;
+            this.labelchanceboost.BackColor = System.Drawing.Color.Transparent;
+            this.labelchanceboost.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelchanceboost.Location = new System.Drawing.Point(6, 97);
+            this.labelchanceboost.Margin = new System.Windows.Forms.Padding(5);
+            this.labelchanceboost.Name = "labelchanceboost";
+            this.labelchanceboost.Size = new System.Drawing.Size(83, 13);
+            this.labelchanceboost.TabIndex = 9;
+            this.labelchanceboost.Text = "Chance (Boost)";
+            // 
+            // chanceboostslider
+            // 
+            this.chanceboostslider.BackColor = System.Drawing.Color.Transparent;
+            this.chanceboostslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.chanceboostslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.chanceboostslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.chanceboostslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.chanceboostslider.DrawSemitransparentThumb = false;
+            this.chanceboostslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.chanceboostslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.chanceboostslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.chanceboostslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.chanceboostslider.ForeColor = System.Drawing.Color.White;
+            this.chanceboostslider.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.chanceboostslider.Location = new System.Drawing.Point(99, 97);
+            this.chanceboostslider.Margin = new System.Windows.Forms.Padding(5);
+            this.chanceboostslider.Maximum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.chanceboostslider.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.chanceboostslider.MouseEffects = false;
+            this.chanceboostslider.Name = "chanceboostslider";
+            this.chanceboostslider.ScaleDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.chanceboostslider.ScaleSubDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.chanceboostslider.ShowDivisionsText = false;
+            this.chanceboostslider.ShowSmallScale = false;
+            this.chanceboostslider.Size = new System.Drawing.Size(88, 17);
+            this.chanceboostslider.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.chanceboostslider.TabIndex = 6;
+            this.chanceboostslider.Text = "colorSlider2";
+            this.chanceboostslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.chanceboostslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.chanceboostslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.chanceboostslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
+            this.chanceboostslider.ThumbSize = new System.Drawing.Size(12, 12);
+            this.chanceboostslider.TickAdd = 0F;
+            this.chanceboostslider.TickColor = System.Drawing.Color.White;
+            this.chanceboostslider.TickDivide = 0F;
+            this.chanceboostslider.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.chanceboostslider.Value = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.chanceboostslider.ValueChanged += new System.EventHandler(this.chanceboostslider_ValueChanged);
+            // 
+            // labeldripmax
+            // 
+            this.labeldripmax.AutoSize = true;
+            this.labeldripmax.BackColor = System.Drawing.Color.Transparent;
+            this.labeldripmax.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labeldripmax.Location = new System.Drawing.Point(6, 28);
+            this.labeldripmax.Margin = new System.Windows.Forms.Padding(5);
+            this.labeldripmax.Name = "labeldripmax";
+            this.labeldripmax.Size = new System.Drawing.Size(66, 13);
+            this.labeldripmax.TabIndex = 5;
+            this.labeldripmax.Text = "Drop Max : ";
+            // 
+            // dropmaxslider
+            // 
+            this.dropmaxslider.BackColor = System.Drawing.Color.Transparent;
+            this.dropmaxslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.dropmaxslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.dropmaxslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.dropmaxslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.dropmaxslider.DrawSemitransparentThumb = false;
+            this.dropmaxslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropmaxslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropmaxslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropmaxslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.dropmaxslider.ForeColor = System.Drawing.Color.White;
+            this.dropmaxslider.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dropmaxslider.Location = new System.Drawing.Point(98, 28);
+            this.dropmaxslider.Margin = new System.Windows.Forms.Padding(5);
+            this.dropmaxslider.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.dropmaxslider.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.dropmaxslider.MouseEffects = false;
+            this.dropmaxslider.Name = "dropmaxslider";
+            this.dropmaxslider.ScaleDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dropmaxslider.ScaleSubDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dropmaxslider.ShowDivisionsText = false;
+            this.dropmaxslider.ShowSmallScale = false;
+            this.dropmaxslider.Size = new System.Drawing.Size(88, 17);
+            this.dropmaxslider.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.dropmaxslider.TabIndex = 4;
+            this.dropmaxslider.Text = "colorSlider1";
+            this.dropmaxslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropmaxslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropmaxslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.dropmaxslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
+            this.dropmaxslider.ThumbSize = new System.Drawing.Size(12, 12);
+            this.dropmaxslider.TickAdd = 0F;
+            this.dropmaxslider.TickColor = System.Drawing.Color.White;
+            this.dropmaxslider.TickDivide = 0F;
+            this.dropmaxslider.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.dropmaxslider.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.dropmaxslider.ValueChanged += new System.EventHandler(this.dropmaxslider_ValueChanged);
+            // 
+            // labelboostmax
+            // 
+            this.labelboostmax.AutoSize = true;
+            this.labelboostmax.BackColor = System.Drawing.Color.Transparent;
+            this.labelboostmax.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelboostmax.Location = new System.Drawing.Point(6, 5);
+            this.labelboostmax.Margin = new System.Windows.Forms.Padding(5);
+            this.labelboostmax.Name = "labelboostmax";
+            this.labelboostmax.Size = new System.Drawing.Size(69, 13);
+            this.labelboostmax.TabIndex = 3;
+            this.labelboostmax.Text = "Boost Max : ";
+            // 
+            // boostmaxslider
+            // 
+            this.boostmaxslider.BackColor = System.Drawing.Color.Transparent;
+            this.boostmaxslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.boostmaxslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.boostmaxslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.boostmaxslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
+            this.boostmaxslider.DrawSemitransparentThumb = false;
+            this.boostmaxslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostmaxslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostmaxslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostmaxslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
+            this.boostmaxslider.ForeColor = System.Drawing.Color.White;
+            this.boostmaxslider.LargeChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.boostmaxslider.Location = new System.Drawing.Point(96, 7);
+            this.boostmaxslider.Margin = new System.Windows.Forms.Padding(5);
+            this.boostmaxslider.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.boostmaxslider.Minimum = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.boostmaxslider.MouseEffects = false;
+            this.boostmaxslider.Name = "boostmaxslider";
+            this.boostmaxslider.ScaleDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.boostmaxslider.ScaleSubDivisions = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.boostmaxslider.ShowDivisionsText = false;
+            this.boostmaxslider.ShowSmallScale = false;
+            this.boostmaxslider.Size = new System.Drawing.Size(88, 17);
+            this.boostmaxslider.SmallChange = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.boostmaxslider.TabIndex = 0;
+            this.boostmaxslider.Text = "colorSlider1";
+            this.boostmaxslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostmaxslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostmaxslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.boostmaxslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
+            this.boostmaxslider.ThumbSize = new System.Drawing.Size(12, 12);
+            this.boostmaxslider.TickAdd = 0F;
+            this.boostmaxslider.TickColor = System.Drawing.Color.White;
+            this.boostmaxslider.TickDivide = 0F;
+            this.boostmaxslider.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.boostmaxslider.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.boostmaxslider.ValueChanged += new System.EventHandler(this.boostmaxslider_ValueChanged);
             // 
             // paneluserinterface
             // 
@@ -616,622 +1262,6 @@
             0});
             this.red_slider.Scroll += new System.Windows.Forms.ScrollEventHandler(this.red_slider_Scroll);
             // 
-            // _presetpanel
-            // 
-            this._presetpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this._presetpanel.Controls.Add(this.label2);
-            this._presetpanel.Controls.Add(this.labeldropmax);
-            this._presetpanel.Controls.Add(this.dropminslider);
-            this._presetpanel.Controls.Add(this.labelboostmin);
-            this._presetpanel.Controls.Add(this.boostminslider);
-            this._presetpanel.Controls.Add(this.chart1);
-            this._presetpanel.Controls.Add(this.randomseedslider);
-            this._presetpanel.Controls.Add(this.labelrandomseed);
-            this._presetpanel.Controls.Add(this.apply);
-            this._presetpanel.Controls.Add(this.labelchanceboost);
-            this._presetpanel.Controls.Add(this.chanceboostslider);
-            this._presetpanel.Controls.Add(this.labeldripmax);
-            this._presetpanel.Controls.Add(this.dropmaxslider);
-            this._presetpanel.Controls.Add(this.labelboostmax);
-            this._presetpanel.Controls.Add(this.boostmaxslider);
-            this._presetpanel.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this._presetpanel.CustomBorderThickness = new System.Windows.Forms.Padding(2);
-            this._presetpanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this._presetpanel.Location = new System.Drawing.Point(10, 39);
-            this._presetpanel.Margin = new System.Windows.Forms.Padding(10);
-            this._presetpanel.Name = "_presetpanel";
-            this._presetpanel.ShadowDecoration.Parent = this._presetpanel;
-            this._presetpanel.Size = new System.Drawing.Size(530, 326);
-            this._presetpanel.TabIndex = 3;
-            this._presetpanel.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(6, 182);
-            this.label2.Margin = new System.Windows.Forms.Padding(5);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 13);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Stats : ";
-            // 
-            // labeldropmax
-            // 
-            this.labeldropmax.AutoSize = true;
-            this.labeldropmax.BackColor = System.Drawing.Color.Transparent;
-            this.labeldropmax.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeldropmax.Location = new System.Drawing.Point(6, 74);
-            this.labeldropmax.Margin = new System.Windows.Forms.Padding(5);
-            this.labeldropmax.Name = "labeldropmax";
-            this.labeldropmax.Size = new System.Drawing.Size(65, 13);
-            this.labeldropmax.TabIndex = 19;
-            this.labeldropmax.Text = "Drop Min : ";
-            // 
-            // dropminslider
-            // 
-            this.dropminslider.BackColor = System.Drawing.Color.Transparent;
-            this.dropminslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.dropminslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.dropminslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.dropminslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.dropminslider.DrawSemitransparentThumb = false;
-            this.dropminslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropminslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropminslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropminslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.dropminslider.ForeColor = System.Drawing.Color.White;
-            this.dropminslider.LargeChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dropminslider.Location = new System.Drawing.Point(96, 74);
-            this.dropminslider.Margin = new System.Windows.Forms.Padding(5);
-            this.dropminslider.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.dropminslider.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.dropminslider.MouseEffects = false;
-            this.dropminslider.Name = "dropminslider";
-            this.dropminslider.ScaleDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dropminslider.ScaleSubDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dropminslider.ShowDivisionsText = false;
-            this.dropminslider.ShowSmallScale = false;
-            this.dropminslider.Size = new System.Drawing.Size(88, 17);
-            this.dropminslider.SmallChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dropminslider.TabIndex = 18;
-            this.dropminslider.Text = "colorSlider5";
-            this.dropminslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropminslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropminslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropminslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
-            this.dropminslider.ThumbSize = new System.Drawing.Size(12, 12);
-            this.dropminslider.TickAdd = 0F;
-            this.dropminslider.TickColor = System.Drawing.Color.White;
-            this.dropminslider.TickDivide = 0F;
-            this.dropminslider.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.dropminslider.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.dropminslider.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dropminslider_Scroll);
-            // 
-            // labelboostmin
-            // 
-            this.labelboostmin.AutoSize = true;
-            this.labelboostmin.BackColor = System.Drawing.Color.Transparent;
-            this.labelboostmin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelboostmin.Location = new System.Drawing.Point(6, 51);
-            this.labelboostmin.Margin = new System.Windows.Forms.Padding(5);
-            this.labelboostmin.Name = "labelboostmin";
-            this.labelboostmin.Size = new System.Drawing.Size(68, 13);
-            this.labelboostmin.TabIndex = 17;
-            this.labelboostmin.Text = "Boost Min : ";
-            // 
-            // boostminslider
-            // 
-            this.boostminslider.BackColor = System.Drawing.Color.Transparent;
-            this.boostminslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.boostminslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.boostminslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.boostminslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.boostminslider.DrawSemitransparentThumb = false;
-            this.boostminslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostminslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostminslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostminslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.boostminslider.ForeColor = System.Drawing.Color.White;
-            this.boostminslider.LargeChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.boostminslider.Location = new System.Drawing.Point(96, 51);
-            this.boostminslider.Margin = new System.Windows.Forms.Padding(5);
-            this.boostminslider.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.boostminslider.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.boostminslider.MouseEffects = false;
-            this.boostminslider.Name = "boostminslider";
-            this.boostminslider.ScaleDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.boostminslider.ScaleSubDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.boostminslider.ShowDivisionsText = false;
-            this.boostminslider.ShowSmallScale = false;
-            this.boostminslider.Size = new System.Drawing.Size(88, 17);
-            this.boostminslider.SmallChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.boostminslider.TabIndex = 16;
-            this.boostminslider.Text = "colorSlider1";
-            this.boostminslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostminslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostminslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostminslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
-            this.boostminslider.ThumbSize = new System.Drawing.Size(12, 12);
-            this.boostminslider.TickAdd = 0F;
-            this.boostminslider.TickColor = System.Drawing.Color.White;
-            this.boostminslider.TickDivide = 0F;
-            this.boostminslider.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.boostminslider.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.boostminslider.Scroll += new System.Windows.Forms.ScrollEventHandler(this.boostminslider_Scroll);
-            // 
-            // chart1
-            // 
-            this.chart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.chart1.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
-            this.chart1.BorderlineWidth = 0;
-            this.chart1.BorderSkin.BorderColor = System.Drawing.Color.Gray;
-            this.chart1.BorderSkin.PageColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            chartArea1.AxisX.InterlacedColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.Interval = 1D;
-            chartArea1.AxisX.LabelAutoFitMaxFontSize = 6;
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.MajorTickMark.LineWidth = 0;
-            chartArea1.AxisX.MajorTickMark.Size = 0F;
-            chartArea1.AxisX.Maximum = 25D;
-            chartArea1.AxisX.MaximumAutoSize = 1F;
-            chartArea1.AxisX.Minimum = 0D;
-            chartArea1.AxisX.MinorGrid.LineWidth = 0;
-            chartArea1.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.MinorTickMark.LineWidth = 0;
-            chartArea1.AxisX.MinorTickMark.Size = 0F;
-            chartArea1.AxisX.ScaleBreakStyle.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.TitleForeColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.Interval = 1D;
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
-            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.MajorTickMark.LineWidth = 0;
-            chartArea1.AxisY.MajorTickMark.Size = 0F;
-            chartArea1.AxisY.Maximum = 25D;
-            chartArea1.AxisY.Minimum = 10D;
-            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.MinorGrid.LineWidth = 0;
-            chartArea1.AxisY.MinorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.MinorTickMark.LineWidth = 0;
-            chartArea1.AxisY.MinorTickMark.Size = 0F;
-            chartArea1.AxisY.TitleForeColor = System.Drawing.Color.Gray;
-            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            chartArea1.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            chartArea1.BorderColor = System.Drawing.Color.Gray;
-            chartArea1.Name = "ChartArea1";
-            chartArea1.ShadowColor = System.Drawing.Color.Gray;
-            this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Location = new System.Drawing.Point(192, 5);
-            this.chart1.Name = "chart1";
-            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.chart1.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.DeepSkyBlue};
-            series1.BorderColor = System.Drawing.Color.Red;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.EmptyPointStyle.LabelForeColor = System.Drawing.Color.Gray;
-            series1.LabelForeColor = System.Drawing.Color.Gray;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueMember = "10";
-            series1.YValueMembers = "10";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(326, 308);
-            this.chart1.TabIndex = 10;
-            this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
-            // 
-            // randomseedslider
-            // 
-            this.randomseedslider.BackColor = System.Drawing.Color.Transparent;
-            this.randomseedslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.randomseedslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.randomseedslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.randomseedslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.randomseedslider.DrawSemitransparentThumb = false;
-            this.randomseedslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.randomseedslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.randomseedslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.randomseedslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.randomseedslider.ForeColor = System.Drawing.Color.White;
-            this.randomseedslider.LargeChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.randomseedslider.Location = new System.Drawing.Point(96, 120);
-            this.randomseedslider.Margin = new System.Windows.Forms.Padding(5);
-            this.randomseedslider.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.randomseedslider.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.randomseedslider.MouseEffects = false;
-            this.randomseedslider.Name = "randomseedslider";
-            this.randomseedslider.ScaleDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.randomseedslider.ScaleSubDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.randomseedslider.ShowDivisionsText = false;
-            this.randomseedslider.ShowSmallScale = false;
-            this.randomseedslider.Size = new System.Drawing.Size(88, 17);
-            this.randomseedslider.SmallChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.randomseedslider.TabIndex = 15;
-            this.randomseedslider.Text = "colorSlider4";
-            this.randomseedslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.randomseedslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.randomseedslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.randomseedslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
-            this.randomseedslider.ThumbSize = new System.Drawing.Size(12, 12);
-            this.randomseedslider.TickAdd = 0F;
-            this.randomseedslider.TickColor = System.Drawing.Color.White;
-            this.randomseedslider.TickDivide = 0F;
-            this.randomseedslider.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.randomseedslider.Value = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.randomseedslider.Scroll += new System.Windows.Forms.ScrollEventHandler(this.randomseedslider_Scroll);
-            // 
-            // labelrandomseed
-            // 
-            this.labelrandomseed.AutoSize = true;
-            this.labelrandomseed.BackColor = System.Drawing.Color.Transparent;
-            this.labelrandomseed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelrandomseed.Location = new System.Drawing.Point(6, 120);
-            this.labelrandomseed.Margin = new System.Windows.Forms.Padding(5);
-            this.labelrandomseed.Name = "labelrandomseed";
-            this.labelrandomseed.Size = new System.Drawing.Size(79, 13);
-            this.labelrandomseed.TabIndex = 14;
-            this.labelrandomseed.Text = "Random-Seed";
-            // 
-            // apply
-            // 
-            this.apply.Animated = true;
-            this.apply.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.apply.BorderRadius = 12;
-            this.apply.BorderThickness = 1;
-            this.apply.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.apply.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
-            this.apply.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.apply.CheckedState.Parent = this.apply;
-            this.apply.CustomImages.Parent = this.apply;
-            this.apply.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
-            this.apply.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.apply.ForeColor = System.Drawing.Color.White;
-            this.apply.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.apply.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
-            this.apply.HoverState.ForeColor = System.Drawing.Color.White;
-            this.apply.HoverState.Parent = this.apply;
-            this.apply.Location = new System.Drawing.Point(44, 147);
-            this.apply.Margin = new System.Windows.Forms.Padding(5);
-            this.apply.Name = "apply";
-            this.apply.ShadowDecoration.Parent = this.apply;
-            this.apply.Size = new System.Drawing.Size(86, 25);
-            this.apply.TabIndex = 13;
-            this.apply.Text = "Check Seed";
-            this.apply.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.apply.Click += new System.EventHandler(this.apply_Click);
-            // 
-            // labelchanceboost
-            // 
-            this.labelchanceboost.AutoSize = true;
-            this.labelchanceboost.BackColor = System.Drawing.Color.Transparent;
-            this.labelchanceboost.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelchanceboost.Location = new System.Drawing.Point(6, 97);
-            this.labelchanceboost.Margin = new System.Windows.Forms.Padding(5);
-            this.labelchanceboost.Name = "labelchanceboost";
-            this.labelchanceboost.Size = new System.Drawing.Size(83, 13);
-            this.labelchanceboost.TabIndex = 9;
-            this.labelchanceboost.Text = "Chance (Boost)";
-            // 
-            // chanceboostslider
-            // 
-            this.chanceboostslider.BackColor = System.Drawing.Color.Transparent;
-            this.chanceboostslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.chanceboostslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.chanceboostslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.chanceboostslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.chanceboostslider.DrawSemitransparentThumb = false;
-            this.chanceboostslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.chanceboostslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.chanceboostslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.chanceboostslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.chanceboostslider.ForeColor = System.Drawing.Color.White;
-            this.chanceboostslider.LargeChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.chanceboostslider.Location = new System.Drawing.Point(96, 97);
-            this.chanceboostslider.Margin = new System.Windows.Forms.Padding(5);
-            this.chanceboostslider.Maximum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.chanceboostslider.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.chanceboostslider.MouseEffects = false;
-            this.chanceboostslider.Name = "chanceboostslider";
-            this.chanceboostslider.ScaleDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.chanceboostslider.ScaleSubDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.chanceboostslider.ShowDivisionsText = false;
-            this.chanceboostslider.ShowSmallScale = false;
-            this.chanceboostslider.Size = new System.Drawing.Size(88, 17);
-            this.chanceboostslider.SmallChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.chanceboostslider.TabIndex = 6;
-            this.chanceboostslider.Text = "colorSlider2";
-            this.chanceboostslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.chanceboostslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.chanceboostslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.chanceboostslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
-            this.chanceboostslider.ThumbSize = new System.Drawing.Size(12, 12);
-            this.chanceboostslider.TickAdd = 0F;
-            this.chanceboostslider.TickColor = System.Drawing.Color.White;
-            this.chanceboostslider.TickDivide = 0F;
-            this.chanceboostslider.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.chanceboostslider.Value = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
-            this.chanceboostslider.Scroll += new System.Windows.Forms.ScrollEventHandler(this.chanceboostslider_Scroll);
-            // 
-            // labeldripmax
-            // 
-            this.labeldripmax.AutoSize = true;
-            this.labeldripmax.BackColor = System.Drawing.Color.Transparent;
-            this.labeldripmax.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeldripmax.Location = new System.Drawing.Point(6, 28);
-            this.labeldripmax.Margin = new System.Windows.Forms.Padding(5);
-            this.labeldripmax.Name = "labeldripmax";
-            this.labeldripmax.Size = new System.Drawing.Size(66, 13);
-            this.labeldripmax.TabIndex = 5;
-            this.labeldripmax.Text = "Drop Max : ";
-            // 
-            // dropmaxslider
-            // 
-            this.dropmaxslider.BackColor = System.Drawing.Color.Transparent;
-            this.dropmaxslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.dropmaxslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.dropmaxslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.dropmaxslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.dropmaxslider.DrawSemitransparentThumb = false;
-            this.dropmaxslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropmaxslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropmaxslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropmaxslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.dropmaxslider.ForeColor = System.Drawing.Color.White;
-            this.dropmaxslider.LargeChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dropmaxslider.Location = new System.Drawing.Point(96, 28);
-            this.dropmaxslider.Margin = new System.Windows.Forms.Padding(5);
-            this.dropmaxslider.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.dropmaxslider.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.dropmaxslider.MouseEffects = false;
-            this.dropmaxslider.Name = "dropmaxslider";
-            this.dropmaxslider.ScaleDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dropmaxslider.ScaleSubDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dropmaxslider.ShowDivisionsText = false;
-            this.dropmaxslider.ShowSmallScale = false;
-            this.dropmaxslider.Size = new System.Drawing.Size(88, 17);
-            this.dropmaxslider.SmallChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.dropmaxslider.TabIndex = 4;
-            this.dropmaxslider.Text = "colorSlider1";
-            this.dropmaxslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropmaxslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropmaxslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.dropmaxslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
-            this.dropmaxslider.ThumbSize = new System.Drawing.Size(12, 12);
-            this.dropmaxslider.TickAdd = 0F;
-            this.dropmaxslider.TickColor = System.Drawing.Color.White;
-            this.dropmaxslider.TickDivide = 0F;
-            this.dropmaxslider.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.dropmaxslider.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.dropmaxslider.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dropmaxslider_Scroll);
-            // 
-            // labelboostmax
-            // 
-            this.labelboostmax.AutoSize = true;
-            this.labelboostmax.BackColor = System.Drawing.Color.Transparent;
-            this.labelboostmax.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelboostmax.Location = new System.Drawing.Point(6, 5);
-            this.labelboostmax.Margin = new System.Windows.Forms.Padding(5);
-            this.labelboostmax.Name = "labelboostmax";
-            this.labelboostmax.Size = new System.Drawing.Size(69, 13);
-            this.labelboostmax.TabIndex = 3;
-            this.labelboostmax.Text = "Boost Max : ";
-            // 
-            // boostmaxslider
-            // 
-            this.boostmaxslider.BackColor = System.Drawing.Color.Transparent;
-            this.boostmaxslider.BarInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.boostmaxslider.BarPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.boostmaxslider.BarPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.boostmaxslider.BorderRoundRectSize = new System.Drawing.Size(8, 8);
-            this.boostmaxslider.DrawSemitransparentThumb = false;
-            this.boostmaxslider.ElapsedInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostmaxslider.ElapsedPenColorBottom = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostmaxslider.ElapsedPenColorTop = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostmaxslider.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.boostmaxslider.ForeColor = System.Drawing.Color.White;
-            this.boostmaxslider.LargeChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.boostmaxslider.Location = new System.Drawing.Point(96, 5);
-            this.boostmaxslider.Margin = new System.Windows.Forms.Padding(5);
-            this.boostmaxslider.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.boostmaxslider.Minimum = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.boostmaxslider.MouseEffects = false;
-            this.boostmaxslider.Name = "boostmaxslider";
-            this.boostmaxslider.ScaleDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.boostmaxslider.ScaleSubDivisions = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.boostmaxslider.ShowDivisionsText = false;
-            this.boostmaxslider.ShowSmallScale = false;
-            this.boostmaxslider.Size = new System.Drawing.Size(88, 17);
-            this.boostmaxslider.SmallChange = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.boostmaxslider.TabIndex = 0;
-            this.boostmaxslider.Text = "colorSlider1";
-            this.boostmaxslider.ThumbInnerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostmaxslider.ThumbOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostmaxslider.ThumbPenColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
-            this.boostmaxslider.ThumbRoundRectSize = new System.Drawing.Size(12, 12);
-            this.boostmaxslider.ThumbSize = new System.Drawing.Size(12, 12);
-            this.boostmaxslider.TickAdd = 0F;
-            this.boostmaxslider.TickColor = System.Drawing.Color.White;
-            this.boostmaxslider.TickDivide = 0F;
-            this.boostmaxslider.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.boostmaxslider.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.boostmaxslider.Scroll += new System.Windows.Forms.ScrollEventHandler(this.boostmaxslider_Scroll);
-            // 
             // DC
             // 
             this.DC.TargetControl = this.guna2Panel1;
@@ -1283,11 +1313,11 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Presets_FormClosing);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
-            this.paneluserinterface.ResumeLayout(false);
-            this.paneluserinterface.PerformLayout();
             this._presetpanel.ResumeLayout(false);
             this._presetpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.paneluserinterface.ResumeLayout(false);
+            this.paneluserinterface.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1334,6 +1364,7 @@
         private System.Windows.Forms.Label preview_label;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private Guna.UI2.WinForms.Guna2Button LoadConfingBtn;
     }
 }
 

@@ -72,6 +72,7 @@
     <Compile Include="Clicker.Designer.cs">
       <DependentUpon>Clicker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Config.cs" />
     <Compile Include="Destructs.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +94,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UrlDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UrlDialog.Designer.cs">
+      <DependentUpon>UrlDialog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Clicker.resx">
       <DependentUpon>Clicker.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -116,6 +123,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UrlDialog.resx">
+      <DependentUpon>UrlDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -151,12 +161,17 @@
       <HintPath>..\..\GunaUI-Key\Crack\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="8b80702a29fd8b392872d9fe262a478f.ico" />

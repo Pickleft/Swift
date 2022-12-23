@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using static Swift.Calls;
-
+using System.Net;
 
 namespace Swift
 {
@@ -136,7 +138,7 @@ namespace Swift
             }
         }
 
-        private void boostmaxslider_Scroll(object sender, ScrollEventArgs e)
+        private void boostmaxslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
             BoostMax = (int)boostmaxslider.Value;
@@ -145,7 +147,7 @@ namespace Swift
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
         }
 
-        private void boostminslider_Scroll(object sender, ScrollEventArgs e)
+        private void boostminslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
             BoostMin = (int)boostminslider.Value;
@@ -154,7 +156,7 @@ namespace Swift
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
         }
 
-        private void randomseedslider_Scroll(object sender, ScrollEventArgs e)
+        private void randomseedslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
             RandomSeed = (int)randomseedslider.Value;
@@ -164,7 +166,7 @@ namespace Swift
             Clicker.random = new Mods.Randomize(Calls.RandomSeed);
         }
 
-        private void chanceboostslider_Scroll(object sender, ScrollEventArgs e)
+        private void chanceboostslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
             ChanceBoost = (int)chanceboostslider.Value;
@@ -173,7 +175,7 @@ namespace Swift
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
         }
 
-        private void dropmaxslider_Scroll(object sender, ScrollEventArgs e)
+        private void dropmaxslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
             DropMax = (int)dropmaxslider.Value;
@@ -182,7 +184,7 @@ namespace Swift
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
         }
 
-        private void dropminslider_Scroll(object sender, ScrollEventArgs e)
+        private void dropminslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
             DropMin = (int)dropminslider.Value;
@@ -313,6 +315,28 @@ namespace Swift
             Show();
             this.WindowState = FormWindowState.Normal;
             notifyIcon1.Visible = false;
+        }
+
+        private void LoadConfingBtn_Click(object sender, EventArgs e)
+        {
+            UrlDialog dialog = new UrlDialog();
+            dialog.ShowDialog(this);
+            try
+            {
+                string dwn_config = new WebClient().DownloadString(dialog.ConfigURL);
+                Config _config = JsonConvert.DeserializeObject<Config>(dwn_config);
+                boostmaxslider.Value = _config.BoostMax;
+                dropmaxslider.Value = _config.DropMax;
+                dropminslider.Value = _config.DropMin;
+                boostminslider.Value = _config.BoostMin;
+                chanceboostslider.Value = _config.ChanceBoost;
+                randomseedslider.Value = _config.RandomSeed;
+            }
+            catch
+            {
+                MessageBox.Show("Bad Input", "Config Loader", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
