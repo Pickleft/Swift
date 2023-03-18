@@ -1,197 +1,152 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Swift.Calls;
 
 namespace Swift.Mods
 {
-    class Core
+    internal class Core
     {
+        #region Properties
         public static Random rnd = new Random();
-        public static async void leftclick(IntPtr window, bool leftlock)
+        #endregion
+
+        #region Left
+        public static async Task leftclick(IntPtr window, bool leftlock, int timeout)
         {
-            if (leftlock)
+            int delay = timeout / 2;
+            int random = rnd.Next(delay / 2);
+            switch (leftlock)
             {
-                if (Control.MouseButtons == MouseButtons.Left)
-                {
-                    await Task.Delay(70);
+                case true:
                     if (Control.MouseButtons == MouseButtons.Left)
                     {
-                        PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(rnd.Next(1, 45));
-                        PostMessage(window, 0x202, 0, 0);
+                        SendMessage(window, 0x201, 0, 0);
+                        await Task.Delay(delay - random); // random & split to humanize the clicks.
+                        SendMessage(window, 0x202, 0, 0);
+                        await Task.Delay(delay + random);
                     }
-                    else
+                    break;
+                case false:
+                    if ((Control.MouseButtons & MouseButtons.Left) == MouseButtons.Left)
                     {
-                        return;
+                        SendMessage(window, 0x201, 0, 0);
+                        await Task.Delay(delay - random); // random & split to humanize the clicks.
+                        SendMessage(window, 0x202, 0, 0);
+                        await Task.Delay(delay + random);
                     }
-                }
-            }
-            else
-            {
-                if (Control.MouseButtons.ToString().Contains("Left"))
-                {
-                    await Task.Delay(70);
-                    if (Control.MouseButtons.ToString().Contains("Left"))
-                    {
-                        PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(rnd.Next(1, 45));
-                        PostMessage(window, 0x202, 0, 0);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                    break;
             }
         }
 
-        public async static void breakblock(IntPtr window, bool leftlock)
+        public static async Task breakblock(IntPtr window, bool leftlock, int timeout)
         {
-            if (leftlock)
+            int delay = timeout / 2;
+            int random = rnd.Next(delay / 2);
+            switch (leftlock)
             {
-                if (Control.MouseButtons == MouseButtons.Left)
-                {
-                    await Task.Delay(70);
+                case true:
                     if (Control.MouseButtons == MouseButtons.Left)
                     {
-                        PostMessage(window, 0x201, 0, 0);
+                        await Task.Delay(delay - random);
+                        SendMessage(window, 0x201, 0, 0);
+                        await Task.Delay(delay + random);
                     }
-                    else
+                    break;
+                case false:
+                    if ((Control.MouseButtons & MouseButtons.Left) > 0)
                     {
-                        return;
+                        await Task.Delay(delay - random);
+                        SendMessage(window, 0x201, 0, 0);
+                        await Task.Delay(delay + random);
                     }
-                }
-
-            }
-            else
-            {
-                if (Control.MouseButtons.ToString().Contains("Left"))
-                {
-                    await Task.Delay(70);
-                    if (Control.MouseButtons.ToString().Contains("Left"))
-                    {
-                        PostMessage(window, 0x201, 0, 0);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                    break;
             }
         }
 
-        public static async void Mode18(IntPtr window, bool leftlock)
+        public static async Task Mode18(IntPtr window, bool leftlock, int timeout)
         {
-            if (leftlock)
+            switch (leftlock)
             {
-                if (Control.MouseButtons == MouseButtons.Left)
-                {
-                    await Task.Delay(70);
+                case true:
                     if (Control.MouseButtons == MouseButtons.Left)
                     {
-                        PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(rnd.Next(1, 3));
-                        PostMessage(window, 0x202, 0, 0);
+                        await Task.Delay(timeout);
+                        SendMessage(window, 0x201, 0, 0);
+                        await Task.Delay(rnd.Next(1, 4)); // random to prevent static delay & sleep for key strokes
+                        SendMessage(window, 0x202, 0, 0);
                     }
-                    else
+                    break;
+                case false:
+                    if ((Control.MouseButtons & MouseButtons.Left) > 0)
                     {
-                        return;
+                        await Task.Delay(timeout);
+                        SendMessage(window, 0x201, 0, 0);
+                        await Task.Delay(rnd.Next(1, 4)); // random to prevent static delay & sleep for key strokes
+                        SendMessage(window, 0x202, 0, 0);
                     }
-                }
+                    break;
             }
-            else
-            {
-                if (Control.MouseButtons.ToString().Contains("Left"))
-                {
-                    await Task.Delay(70);
-                    if (Control.MouseButtons.ToString().Contains("Left"))
-                    {
-                        PostMessage(window, 0x201, 0, 0);
-                        await Task.Delay(rnd.Next(1, 3));
-                        PostMessage(window, 0x202, 0, 0);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-            }
+
         }
-        public static async void rightclick(IntPtr window, bool leftlock)
+        #endregion
+
+        #region Right
+        public static async Task rightclick(IntPtr window, bool rightlock, int timeout)
         {
-            if (leftlock)
+            int delay = timeout / 2;
+            int random = rnd.Next(delay / 2);
+            switch (rightlock)
             {
-                if (Control.MouseButtons == MouseButtons.Right)
-                {
-                    await Task.Delay(70);
+                case true:
                     if (Control.MouseButtons == MouseButtons.Right)
                     {
-                        PostMessage(window, 0x204, 0, 0);
-                        await Task.Delay(rnd.Next(1, 45));
-                        PostMessage(window, 0x205, 0, 0);
+                        await Task.Delay(delay - random);
+                        SendMessage(window, 0x204, 0, 0);
+                        await Task.Delay(delay + random);  // random & split to humanize the clicks.
+                        SendMessage(window, 0x205, 0, 0);
                     }
-                    else
+                    break;
+                case false:
+                    if ((Control.MouseButtons & MouseButtons.Right) > 0)
                     {
-                        return;
+                        await Task.Delay(delay - random);
+                        SendMessage(window, 0x204, 0, 0);
+                        await Task.Delay(delay + random);  // random & split to humanize the clicks.
+                        SendMessage(window, 0x205, 0, 0);
                     }
-                }
-            }
-            else
-            {
-                if (Control.MouseButtons.ToString().Contains("Right"))
-                {
-                    await Task.Delay(70);
-                    if (Control.MouseButtons.ToString().Contains("Right"))
-                    {
-                        PostMessage(window, 0x204, 0, 0);
-                        await Task.Delay(rnd.Next(1, 45));
-                        PostMessage(window, 0x205, 0, 0);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
+                    break;
             }
         }
 
-        public async static void rodorfoodlol(IntPtr window, bool leftlock)
+        public static async Task rodorfoodlol(IntPtr window, bool rightlock, int timeout)
         {
-            if (leftlock)
+            int delay = timeout / 2;
+            int random = rnd.Next(delay / 2);
+            switch (rightlock)
             {
-                if (Control.MouseButtons == MouseButtons.Right)
-                {
-                    await Task.Delay(70);
+                case true:
                     if (Control.MouseButtons == MouseButtons.Right)
                     {
-                        PostMessage(window, 0x204, 0, 0);
+                        await Task.Delay(delay - random);
+                        SendMessage(window, 0x204, 0, 0);
+                        await Task.Delay(delay + random);  // random & split to humanize the clicks.
                     }
-                    else
+                    break;
+                case false:
+                    if ((Control.MouseButtons & MouseButtons.Right) > 0)
                     {
-                        return;
+                        await Task.Delay(delay - random);
+                        SendMessage(window, 0x204, 0, 0);
+                        await Task.Delay(delay + random);  // random & split to humanize the clicks.
                     }
-                }
+                    break;
+            }
 
-            }
-            else
-            {
-                if (Control.MouseButtons.ToString().Contains("Right"))
-                {
-                    await Task.Delay(70);
-                    if (Control.MouseButtons.ToString().Contains("Right"))
-                    {
-                        PostMessage(window, 0x204, 0, 0);
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-            }
         }
+        #endregion
     }
 }

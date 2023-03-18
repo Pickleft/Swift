@@ -1,151 +1,114 @@
-﻿using System;
+﻿using Swift.Mods;
+using System;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Swift.Calls;
-using Swift.Mods;
-using System.Diagnostics;
 
 namespace Swift
 {
     public partial class Clicker : Form
     {
+        #region Properties
+        private IntPtr javah;
+        private bool leftlock;
+        private bool blocks;
+        private bool vermode;
+        private bool foodorrod;
+        private bool rightlock;
+        public static Randomize random = new Randomize(Calls.RandomSeed);
+        private readonly System.Timers.Timer randomizer = new System.Timers.Timer();
+        private CancellationTokenSource CancelTokenLeft;
+        private CancellationTokenSource CancelTokenRight;
+        #endregion
 
-        /* removed shift disable and double click cause i am a lazy fuck, code it yourself. 
-        the keyregister thing overrides so don't cry about it
-        randomizatin is prt decent unless you got better make a pull request or something in github
-        */
-        IntPtr javah;
-        bool leftlock;
-        bool blocks;
-        bool vermode;
-        bool foodorrod;
-        bool rightlock;
-        public int idofL = 1;
-        public int idofR = 2;
-        System.Timers.Timer clicker = new System.Timers.Timer();
-        System.Timers.Timer rightclicker = new System.Timers.Timer();
-        System.Timers.Timer randomizer = new System.Timers.Timer();
-
-
+        #region Constructor (.ctor)
         public Clicker()
         {
-            this.Opacity = 0.95;
-            clicker.Elapsed += Clickvent;
-            rightclicker.Elapsed += RightClickvent;
+            Opacity = 0.95;
             randomizer.Elapsed += randomvent;
             InitializeComponent();
         }
+        #endregion
 
+        #region HotKeys
         protected override void WndProc(ref Message m)
         {
-            try
+            if (m.Msg == 0x312)
             {
-                if (Bind.Text != "[ Bind ]")
+                int id = m.WParam.ToInt32();
+                if (id == 1)
                 {
-                    if (Bind.Text != "[ ... ]")
-                    {
-                        Calls.UnregisterHotKey(Handle, idofL);
-                        Keys key = (Keys)new KeysConverter().ConvertFromString(Bind.Text.Trim('[', ']', ' '));
-                        Calls.RegisterHotKey(Handle, 1, 0, (uint)key);
-                    }
+                    statusleft.Checked = !statusleft.Checked;
                 }
-                if (rbind.Text != "[ Bind ]")
+                else if (id == 2)
                 {
-                    if (rbind.Text != "[ ... ]")
-                    {
-                        Calls.UnregisterHotKey(Handle, idofR);
-                        Keys keyright = (Keys)new KeysConverter().ConvertFromString(rbind.Text.Trim('[', ']', ' '));
-                        Calls.RegisterHotKey(Handle, 2, 0, (uint)keyright);
-                    }
+                    statusright.Checked = !statusright.Checked;
                 }
-                if (m.Msg == 0x312)
-                {
-                    int id = m.WParam.ToInt32();
-                    if (id == 1)
-                    {
-                        if (clicker.Enabled == true)
-                        {
-                            clicker.Enabled = false;
-                            statusleft.Checked = false;
-                        }
-                        else
-                        {
-                            clicker.Enabled = true;
-                            statusleft.Checked = true;
-
-                        }
-                    }
-                    else if (id == 2)
-                    {
-                        if (rightclicker.Enabled == true)
-                        {
-                            rightclicker.Enabled = false;
-                            statusright.Checked = false;
-                        }
-                        else
-                        {
-                            rightclicker.Enabled = true;
-                            statusright.Checked = true;
-                        }
-                    }
-                }
-            }
-            catch
-            {
-
             }
             base.WndProc(ref m);
         }
+        #endregion
 
-
-        private void Clickvent(object sender, System.Timers.ElapsedEventArgs e)
+        #region Clicker Modules
+        private void Clickvent()
         {
-            clicker.Interval = leftcps;
-            Process[] processes = Process.GetProcesses();
-            foreach (Process pList in processes)
+            while (!CancelTokenLeft.IsCancellationRequested)
             {
-                if (pList.ProcessName.Contains("javaw") || pList.ProcessName.Contains("java")) // fixed typo
+                bool isclicking = (MouseButtons & MouseButtons.Left) > 0;
+                switch (isclicking)
                 {
-                    javah = pList.MainWindowHandle;
+                    case true:
+                        Thread.Sleep(0); // // To improve preformance when clicking
+                        break;
+                    case false:
+                        Thread.Sleep(1);// Consume less cpu usage when not clicking
+                        break;
                 }
-            }
-            if (vermode)
-            {
-                Core.Mode18(javah, leftlock);
-            }
-            else if (blocks)
-            {
-                Core.breakblock(javah, leftlock);
-            }
-            else
-            {
-                Core.leftclick(javah, leftlock);
+                if (vermode)
+                {
+                    Core.Mode18(javah, leftlock, (int)leftcps).Wait();
+                }
+                else if (blocks)
+                {
+                    Core.breakblock(javah, leftlock, (int)leftcps).Wait();
+                }
+                else
+                {
 
+                    Core.leftclick(javah, leftlock, (int)leftcps).Wait();
+                }
             }
         }
 
 
-        private void RightClickvent(object sender, System.Timers.ElapsedEventArgs e)
+        private void RightClickvent()
         {
-            rightclicker.Interval = rightcps;
-            Process[] processes = Process.GetProcesses();
-            foreach (Process pList in processes)
+            while (!CancelTokenRight.IsCancellationRequested)
             {
-                if (pList.ProcessName.Contains("javaw"))
+                bool isclicking = (MouseButtons & MouseButtons.Right) > 0;
+                switch (isclicking)
                 {
-                    javah = pList.MainWindowHandle;
+                    case true:
+                        Thread.Sleep(0); // To improve preformance when clicking
+                        break;
+                    case false:
+                        Thread.Sleep(1);// Consume less cpu usage when not clicking
+                        break;
                 }
-            }
-            if (foodorrod)
-            {
-                Core.rodorfoodlol(javah, rightlock);
-            }
-            else
-            {
-                Core.rightclick(javah, rightlock);
+                switch (foodorrod)
+                {
+                    case true:
+                        Core.rodorfoodlol(javah, rightlock, (int)rightcps).Wait();
+                        break;
+                    case false:
+                        Core.rightclick(javah, rightlock, (int)rightcps).Wait();
+                        break;
+                }
             }
         }
 
-        public static Randomize random = new Randomize(Calls.RandomSeed);
 
         private void randomvent(object sender, System.Timers.ElapsedEventArgs e)
         {
@@ -163,10 +126,17 @@ namespace Swift
             }
         }
 
+        private void WindowFinder_Tick(object sender, EventArgs e)
+        {
+            javah = Guna.UI2.Native.WinApi.FindWindow("LWJGL", null);
+        }
+        #endregion
+
+        #region Gui Control
         private void Home_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            H.Location = this.Location;
+            Hide();
+            H.Location = Location;
             H.Opacity = 0.3;
             H.Show();
             animate.Start();
@@ -215,9 +185,43 @@ namespace Swift
 
         private void Clicker_Load(object sender, EventArgs e)
         {
-            this.Refresh();
+            Refresh();
         }
 
+        private void Preset_Click(object sender, EventArgs e)
+        {
+            Hide();
+            P.Location = Location;
+            P.Opacity = 0.3;
+            P.Show();
+            animate.Start();
+        }
+
+        private void destruct_Click(object sender, EventArgs e)
+        {
+            Hide();
+            D.Location = Location;
+            D.Opacity = 0.3;
+            D.Show();
+            animate.Start();
+            KillService();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = true;
+        }
+        #endregion
+
+        #region Properties Control
         private void colorSlider1_ValueChanged(object sender, EventArgs e)
         {
             /* cause i used timers i had to substract 2 from the value to accurate it */
@@ -228,28 +232,14 @@ namespace Swift
 
         private void Randomize_CheckedChanged(object sender, EventArgs e)
         {
-            if (Randomize.Checked)
-            {
-                randomizer.Enabled = true;
-            }
-            else
-            {
-                randomizer.Enabled = false;
-            }
+            randomizer.Enabled = Randomize.Checked;
         }
-
 
         private void blatant_CheckedChanged(object sender, EventArgs e)
         {
-            if (blatant.Checked)
-            {
-                Lcpsslider.Maximum = 52;
-            }
-            else
-            {
-                Lcpsslider.Maximum = 22;
-            }
+            Lcpsslider.Maximum = blatant.Checked ? 102 : 22;
         }
+
         private void breakblock_CheckedChanged(object sender, EventArgs e)
         {
             if (breakblock.Checked)
@@ -278,20 +268,68 @@ namespace Swift
 
         private void lmblock_CheckedChanged(object sender, EventArgs e)
         {
-            if (lmblock.Checked)
+            leftlock = lmblock.Checked;
+        }
+
+        private void blatantr_CheckedChanged(object sender, EventArgs e)
+        {
+            Rcpsslider.Maximum = blatantr.Checked ? 52 : 22;
+        }
+        private void statusleft_CheckedChanged(object sender, EventArgs e)
+        {
+            CancelTokenLeft = new CancellationTokenSource();
+            if (statusleft.Checked)
             {
-                leftlock = true;
+                new Task((Action) => Clickvent(), CancelTokenLeft.Token, TaskCreationOptions.LongRunning).Start();
             }
             else
             {
-                leftlock = false;
+                CancelTokenLeft.Cancel();
+            }
+        }
+        private void statusright_CheckedChanged(object sender, EventArgs e)
+        {
+            CancelTokenRight = new CancellationTokenSource();
+            if (statusright.Checked)
+            {
+                new Task((Action) => RightClickvent(), CancelTokenRight.Token, TaskCreationOptions.LongRunning).Start();
+            }
+            else
+            {
+                CancelTokenRight.Cancel();
             }
         }
 
+        private void rmblock_CheckedChanged(object sender, EventArgs e)
+        {
+            rightlock = rmblock.Checked;
+        }
+
+        private void food_CheckedChanged(object sender, EventArgs e)
+        {
+            foodorrod = food.Checked;
+        }
+
+        private void Rcpsslider_ValueChanged(object sender, EventArgs e)
+        {
+            Rcps.Text = "Average Right CPS : " + (Rcpsslider.Value - 2).ToString();
+            _cps = (double)Rcpsslider.Value;
+            rightcps = (double)(1000 / Rcpsslider.Value);
+        }
+
+        #endregion
+
+        #region Key Bind Selector
         private void Bind_Click(object sender, EventArgs e)
         {
             Bind.Text = "[ ... ]";
             Bind.Checked = true;
+        }
+
+        private void rbind_Click(object sender, EventArgs e)
+        {
+            rbind.Text = "[ ... ]";
+            rbind.Checked = true;
         }
 
         private void Bind_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -305,6 +343,9 @@ namespace Swift
                 else
                 {
                     Bind.Text = $"[ {e.KeyCode} ]";
+                    Calls.UnregisterHotKey(Handle, 1);
+                    Keys key = e.KeyCode;
+                    Calls.RegisterHotKey(Handle, 1, 0, (uint)key);
                 }
                 Bind.Checked = false;
             }
@@ -312,84 +353,6 @@ namespace Swift
             {
                 return;
             }
-        }
-
-        private void statusleft_CheckedChanged(object sender, EventArgs e)
-        {
-            if (statusleft.Checked)
-            {
-                clicker.Enabled = true;
-            }
-            else
-            {
-                clicker.Enabled = false;
-            }
-        }
-
-        private void Clicker_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void blatantr_CheckedChanged(object sender, EventArgs e)
-        {
-            if (blatantr.Checked)
-            {
-                Rcpsslider.Maximum = 52;
-            }
-            else
-            {
-                Rcpsslider.Maximum = 22;
-            }
-        }
-
-        private void statusright_CheckedChanged(object sender, EventArgs e)
-        {
-            if (statusright.Checked)
-            {
-                rightclicker.Enabled = true;
-            }
-            else
-            {
-                rightclicker.Enabled = false;
-            }
-        }
-
-        private void rmblock_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rmblock.Checked)
-            {
-                rightlock = true;
-            }
-            else
-            {
-                rightlock = false;
-            }
-        }
-
-        private void food_CheckedChanged(object sender, EventArgs e)
-        {
-            if (food.Checked)
-            {
-                foodorrod = true;
-            }
-            else
-            {
-                foodorrod = false;
-            }
-        }
-
-        private void rbind_Click(object sender, EventArgs e)
-        {
-            rbind.Text = "[ ... ]";
-            rbind.Checked = true;
-        }
-
-        private void Rcpsslider_ValueChanged(object sender, EventArgs e)
-        {
-            Rcps.Text = "Average Right CPS : " + (Rcpsslider.Value - 2).ToString();
-            _cps = (double)Rcpsslider.Value;
-            rightcps = (double)(1000 / Rcpsslider.Value);
         }
 
         private void rbind_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
@@ -403,6 +366,9 @@ namespace Swift
                 else
                 {
                     rbind.Text = $"[ {e.KeyCode} ]";
+                    Calls.UnregisterHotKey(Handle, 2);
+                    Keys keyright = e.KeyCode;
+                    Calls.RegisterHotKey(Handle, 2, 0, (uint)keyright);
                 }
                 rbind.Checked = false;
             }
@@ -411,37 +377,6 @@ namespace Swift
                 return;
             }
         }
-
-        private void Preset_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            P.Location = this.Location;
-            P.Opacity = 0.3;
-            P.Show();
-            animate.Start();
-        }
-
-        private void destruct_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            D.Location = this.Location;
-            D.Opacity = 0.3;
-            D.Show();
-            animate.Start();
-            KillService();
-        }
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Show();
-            this.WindowState = FormWindowState.Normal;
-            notifyIcon1.Visible = false;
-        }
-
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            Hide();
-            notifyIcon1.Visible = true;
-        }
+        #endregion
     }
 }

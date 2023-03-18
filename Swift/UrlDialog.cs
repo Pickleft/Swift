@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Swift
 {
     public partial class UrlDialog : Form
     {
+        #region Constructor .ctor
         public UrlDialog()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Properties
         public string ConfigURL { get; private set; }
+        #endregion
 
+        #region Methods
         private void URLTextBox_TextChanged(object sender, EventArgs e)
         {
             ConfigURL = URLTextBox.Text;
@@ -26,7 +24,7 @@ namespace Swift
 
         private void UrlDialog_FormClosed(object sender, FormClosedEventArgs e)
         {
-            DialogResult = DialogResult.OK;
         }
+        #endregion
     }
 }

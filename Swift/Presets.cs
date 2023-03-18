@@ -1,30 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using Newtonsoft.Json;
+using System;
 using System.Linq;
-using System.Windows.Forms;
-using Newtonsoft.Json;
-using static Swift.Calls;
 using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Windows.Forms;
+using static Swift.Calls;
 
 namespace Swift
 {
     public partial class Presets : Form
     {
+        // promised to release at a specific time no time to fix horrible config code.
+
+        #region Properties
+        private Mods.Randomize randomize;
+        #endregion
+
+        #region Constructor .ctor
         public Presets()
         {
             InitializeComponent();
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
-            BoostMax = (int)boostmaxslider.Value;
-            BoostMin = (int)boostminslider.Value;
-            RandomSeed = (int)randomseedslider.Value;
-            ChanceBoost = (int)chanceboostslider.Value;
-            DropMax = (int)dropmaxslider.Value;
-            DropMin = (int)dropminslider.Value;
-            this.Opacity = 0.95;
+            BoostMax = (uint)boostmaxslider.Value;
+            BoostMin = (uint)boostminslider.Value;
+            RandomSeed = (uint)randomseedslider.Value;
+            ChanceBoost = (uint)chanceboostslider.Value;
+            DropMax = (uint)dropmaxslider.Value;
+            DropMin = (uint)dropminslider.Value;
+            Opacity = 0.95;
         }
+        #endregion
 
-
+        #region GUI Control
         private void animate_Tick(object sender, EventArgs e)
         {
             if (C.Visible)
@@ -62,8 +70,8 @@ namespace Swift
 
         private void Home_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            H.Location = this.Location;
+            Hide();
+            H.Location = Location;
             H.Opacity = 0.3;
             H.Show();
             animate.Start();
@@ -71,8 +79,8 @@ namespace Swift
 
         private void clicker_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            C.Location = this.Location;
+            Hide();
+            C.Location = Location;
             C.Opacity = 0.3;
             C.Show();
             animate.Start();
@@ -85,16 +93,10 @@ namespace Swift
             clicker.Checked = false;
         }
 
-        private void Presets_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-
         private void destruct_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            D.Location = this.Location;
+            Hide();
+            D.Location = Location;
             D.Opacity = 0.3;
             D.Show();
             animate.Start();
@@ -105,43 +107,42 @@ namespace Swift
         {
             paneluserinterface.Visible = false;
             CustomUIbutton.Checked = false;
-            if (CustomPresetButton.Checked)
-            {
-                _presetpanel.Visible = true;
-            }
-            else
-            {
-                _presetpanel.Visible = false;
-            }
+            _presetpanel.Visible = CustomPresetButton.Checked;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = true;
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
         }
 
         private void chart1_Click(object sender, EventArgs e)
         {
 
         }
+        #endregion
 
-        Mods.Randomize randomize;
-
+        #region Config Control
         private void apply_Click(object sender, EventArgs e)
         {
             chart1.Series.FirstOrDefault().Points.Clear();
             chart1.ChartAreas.FirstOrDefault().AxisX.Maximum = 25;
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
             randomize = new Mods.Randomize(RandomSeed);
-            if (timer1.Enabled)
-            {
-                timer1.Enabled = false;
-            }
-            else
-            {
-                timer1.Enabled = true;
-            }
+            timer1.Enabled = !timer1.Enabled;
         }
 
         private void boostmaxslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
-            BoostMax = (int)boostmaxslider.Value;
+            BoostMax = (uint)boostmaxslider.Value;
             chart1.Series.FirstOrDefault().Points.Clear();
             chart1.ChartAreas.FirstOrDefault().AxisX.Maximum = 25;
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
@@ -150,7 +151,7 @@ namespace Swift
         private void boostminslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
-            BoostMin = (int)boostminslider.Value;
+            BoostMin = (uint)boostminslider.Value;
             chart1.Series.FirstOrDefault().Points.Clear();
             chart1.ChartAreas.FirstOrDefault().AxisX.Maximum = 25;
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
@@ -159,7 +160,7 @@ namespace Swift
         private void randomseedslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
-            RandomSeed = (int)randomseedslider.Value;
+            RandomSeed = (uint)randomseedslider.Value;
             chart1.Series.FirstOrDefault().Points.Clear();
             chart1.ChartAreas.FirstOrDefault().AxisX.Maximum = 25;
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
@@ -169,7 +170,7 @@ namespace Swift
         private void chanceboostslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
-            ChanceBoost = (int)chanceboostslider.Value;
+            ChanceBoost = (uint)chanceboostslider.Value;
             chart1.Series.FirstOrDefault().Points.Clear();
             chart1.ChartAreas.FirstOrDefault().AxisX.Maximum = 25;
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
@@ -178,7 +179,7 @@ namespace Swift
         private void dropmaxslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
-            DropMax = (int)dropmaxslider.Value;
+            DropMax = (uint)dropmaxslider.Value;
             chart1.Series.FirstOrDefault().Points.Clear();
             chart1.ChartAreas.FirstOrDefault().AxisX.Maximum = 25;
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
@@ -187,7 +188,7 @@ namespace Swift
         private void dropminslider_ValueChanged(object sender, EventArgs e)
         {
             label2.Text = $"Stats : \nBoost Max : {boostmaxslider.Value}\nDrop Max : {dropmaxslider.Value}\nBoost Min : {boostminslider.Value}\nDrop Min : {dropminslider.Value}\nChance Boost : {chanceboostslider.Value}%\nChance Drop : {100 - chanceboostslider.Value}\nRandom Seed : {randomseedslider.Value}";
-            DropMin = (int)dropminslider.Value;
+            DropMin = (uint)dropminslider.Value;
             chart1.Series.FirstOrDefault().Points.Clear();
             chart1.ChartAreas.FirstOrDefault().AxisX.Maximum = 25;
             chart1.ChartAreas.FirstOrDefault().AxisX.Minimum = 0;
@@ -197,22 +198,17 @@ namespace Swift
         {
             UpdateChart(chart1, randomize, ChanceBoost, BoostMin, BoostMax, DropMin, DropMax, Calls.cps - 2);
         }
+        #endregion
 
+        #region Custom UI Control
         private void CustomUIbutton_Click(object sender, EventArgs e)
         {
             _presetpanel.Visible = false;
             CustomPresetButton.Checked = false;
-            if (CustomUIbutton.Checked)
-            {
-                paneluserinterface.Visible = true;
-            }
-            else
-            {
-                paneluserinterface.Visible = false;
-            }
+            paneluserinterface.Visible = CustomUIbutton.Checked;
         }
 
-        
+
 
         private void green_slider_Scroll(object sender, ScrollEventArgs e)
         {
@@ -303,20 +299,9 @@ namespace Swift
                 }
             }
         }
+        #endregion
 
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            Hide();
-            notifyIcon1.Visible = true;
-        }
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Show();
-            this.WindowState = FormWindowState.Normal;
-            notifyIcon1.Visible = false;
-        }
-
+        #region Config Control
         private void LoadConfingBtn_Click(object sender, EventArgs e)
         {
             UrlDialog dialog = new UrlDialog();
@@ -332,11 +317,85 @@ namespace Swift
                 chanceboostslider.Value = _config.ChanceBoost;
                 randomseedslider.Value = _config.RandomSeed;
             }
-            catch
-            {
-                MessageBox.Show("Bad Input", "Config Loader", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (Exception ex)
+            { 
+                if (ex.GetType() == typeof(WebException))
+                {
+                    MessageBox.Show("Download Error", "Config Loader", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Bad Input", "Config Loader", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            
+        }
+        #endregion
+
+        private void Catmode_Checkbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Form[] forms = { P, C, H, D };
+            foreach (Form form in forms)
+            {
+                form.BackgroundImage = Properties.Resources.Cat;
+                foreach (Guna.UI2.WinForms.Guna2Panel panel in form.Controls)
+                {
+                    panel.BackColor = System.Drawing.Color.Transparent;
+                    panel.FillColor = System.Drawing.Color.Transparent;
+                    foreach (Control obj in panel.Controls)
+                    {
+                        if (obj.GetType() == typeof(Guna.UI2.WinForms.Guna2Button))
+                        {
+                            Guna.UI2.WinForms.Guna2Button button = (Guna.UI2.WinForms.Guna2Button)obj;
+                            button.BackColor = System.Drawing.Color.Transparent;
+                            button.FillColor = System.Drawing.Color.Transparent;
+                            button.HoverState.FillColor = System.Drawing.Color.Transparent;
+                            button.CheckedState.FillColor = System.Drawing.Color.Transparent;
+                        }
+                        if (obj.GetType() == typeof(Guna.UI2.WinForms.Guna2Panel))
+                        {
+                            Guna.UI2.WinForms.Guna2Panel panel_ = (Guna.UI2.WinForms.Guna2Panel)obj;
+                            panel_.BackColor = System.Drawing.Color.Transparent;
+                            panel_.FillColor = System.Drawing.Color.Transparent;
+                            foreach (object obj_child in panel_.Controls)
+                            {
+                                if (obj_child.GetType() == typeof(Guna.UI2.WinForms.Guna2Button))
+                                {
+                                    Guna.UI2.WinForms.Guna2Button button = (Guna.UI2.WinForms.Guna2Button)obj_child;
+                                    button.FillColor = System.Drawing.Color.Transparent;
+                                    button.BackColor = System.Drawing.Color.Transparent;
+                                    button.HoverState.FillColor = System.Drawing.Color.Transparent;
+                                    button.CheckedState.FillColor = System.Drawing.Color.Transparent;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private async void UpldCfgBtn_Click(object sender, EventArgs e)
+        {
+            ConfigDialog cfgdialg = new ConfigDialog();
+            cfgdialg.ShowDialog(this);
+            try
+            {
+                HttpClient client = new HttpClient();
+                Config cfg = new Config(BoostMax, DropMax, BoostMin, DropMin, ChanceBoost, RandomSeed);
+                StringContent str = new StringContent($"{JsonConvert.SerializeObject(cfg)}", Encoding.UTF8, "application/json");
+                var result = await client.PostAsync($"https://CrimsonGraveMonad.pickleft.repl.co/Settings?CfgName={cfgdialg.ConfigName}&USER_ID={cfgdialg.ID}", str); // swift manager website
+                if (result.Content.ReadAsStringAsync().Result.Contains("Success -> "))
+                {
+                    MessageBox.Show("Confirmation Sent");
+                }
+                else
+                {
+                    MessageBox.Show("Failed To Upload => " + result.Content.ReadAsStringAsync().Result);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error : " + ex.Message);
+            }
         }
     }
 }

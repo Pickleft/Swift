@@ -1,23 +1,26 @@
 ﻿using System;
-using System.Drawing;
-using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Drawing;
+using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Swift.Calls;
-using System.Reflection;
 
 namespace Swift
 {
     public partial class Menu : Form
     {
+        #region Constructor .ctor
         public Menu()
         {
             InitializeComponent();
             guna2HtmlLabel4.Text = "Build N° : " + Assembly.GetExecutingAssembly().GetName().Version.Build;
             guna2HtmlLabel5.Text = "Version : " + Process.GetCurrentProcess().MainModule.FileVersionInfo.FileVersion;
-            this.Opacity = 0.95;
+            Opacity = 0.95;
         }
+        #endregion
 
+        #region GUI & Socials Controls
         private void discord_DoubleClick(object sender, EventArgs e)
         {
             Process.Start("https://discord.gg/vTECNKcydU");
@@ -26,7 +29,7 @@ namespace Swift
         private void twitter_DoubleClick(object sender, EventArgs e)
         {
             Process.Start("https://Twitter.com/Pickleft");
-            
+
         }
 
         private void youtube_DoubleClick(object sender, EventArgs e)
@@ -51,10 +54,11 @@ namespace Swift
             tt.ToolTipTitle = "Twitter";
             tt.SetToolTip(twitter, "Double Click to open Twitter Profile Link : Twitter.com/Pickleft");
         }
+
         private void clicker_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            C.Location = this.Location;
+            Hide();
+            C.Location = Location;
             C.Opacity = 0.3;
             C.Show();
             animate.Start();
@@ -104,7 +108,7 @@ namespace Swift
         private async void Menu_Load(object sender, EventArgs e)
         {
             guna2HtmlLabel2.ForeColor = Color.White;
-            this.Refresh();
+            Refresh();
             int i = 0;
             string title = "Swift.";
             string newtitle = "";
@@ -147,11 +151,6 @@ namespace Swift
 
         }
 
-        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -159,8 +158,8 @@ namespace Swift
 
         private void Presets_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            P.Location = this.Location;
+            Hide();
+            P.Location = Location;
             P.Opacity = 0.3;
             P.Show();
             animate.Start();
@@ -168,8 +167,8 @@ namespace Swift
 
         private void destruct_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            D.Location = this.Location;
+            Hide();
+            D.Location = Location;
             D.Opacity = 0.3;
             D.Show();
             animate.Start();
@@ -184,7 +183,7 @@ namespace Swift
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Show();
-            this.WindowState = FormWindowState.Normal;
+            WindowState = FormWindowState.Normal;
             notifyIcon1.Visible = false;
         }
 
@@ -193,5 +192,6 @@ namespace Swift
             Hide();
             notifyIcon1.Visible = true;
         }
+        #endregion
     }
 }

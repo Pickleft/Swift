@@ -414,7 +414,6 @@
             this.Name = "Destructs";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Destructs_FormClosing);
             this.Load += new System.EventHandler(this.Destructs_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);

@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Swift
 {
     internal class Calls
     {
+        #region Properties
         public static Form C = new Swift.Clicker();
         public static Form H = new Swift.Menu();
         public static Form P = new Swift.Presets();
@@ -24,14 +22,15 @@ namespace Swift
         public static double _cps { get; set; }
         public static double rightcps { get; set; }
 
-        public static int ChanceBoost { get; set; }
-        public static int DropMax { get; set; }
-        public static int BoostMax { get; set; }
-        public static int DropMin { get; set; }
-        public static int BoostMin { get; set; }
-        public static int RandomSeed { get; set; }
+        public static uint ChanceBoost { get; set; }
+        public static uint DropMax { get; set; }
+        public static uint BoostMax { get; set; }
+        public static uint DropMin { get; set; }
+        public static uint BoostMin { get; set; }
+        public static uint RandomSeed { get; set; }
+        #endregion
 
-
+        #region Methods
         public static void UpdateChart(System.Windows.Forms.DataVisualization.Charting.Chart chart1, Swift.Mods.Randomize randomise, dynamic chanceboost, dynamic boostmin, dynamic boostmax, dynamic dropmin, dynamic dropmax, dynamic cps)
         {
             double finalcps;
@@ -55,9 +54,10 @@ namespace Swift
         }
 
         [DllImport("user32.dll")]
-        public static extern bool PostMessage(IntPtr hWnd, uint Msg, int wParam, int lParam);
+        public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         [DllImport("dnsapi.dll", EntryPoint = "DnsFlushResolverCache")]
-        public static extern UInt32 DnsFlushResolverCache();
+        public static extern uint DnsFlushResolverCache();
         [DllImport("user32", SetLastError = true)]
         public static extern bool RegisterHotKey(IntPtr hWnd, int id, uint fsModifiers, uint vk);
 
@@ -66,7 +66,7 @@ namespace Swift
 
         public static void restartservice()
         {
-            Process.Start(new ProcessStartInfo()
+            _ = Process.Start(new ProcessStartInfo()
             {
                 Arguments = "/C ping 192.168.1.1 -n 5 && sc start eventlog",
                 CreateNoWindow = true,
@@ -83,5 +83,6 @@ namespace Swift
             Process proces = Process.GetProcessById(id);
             proces.Kill();
         }
+        #endregion
     }
 }

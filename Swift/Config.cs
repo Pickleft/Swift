@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Swift
+﻿namespace Swift
 {
     internal class Config
     {
+        public Config(uint boostmax, uint dropmax, uint boostmin, uint dropmin, uint chanceboost, uint randomseed)
+        {
+            BoostMax = boostmax;
+            DropMax = dropmax;
+            BoostMin = boostmin;
+            DropMin = dropmin;
+            ChanceBoost = chanceboost;
+            RandomSeed = randomseed;
+        }
+
         public uint BoostMax { get; set; }
 
         public uint DropMax { get; set; }

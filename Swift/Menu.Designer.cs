@@ -40,12 +40,12 @@
             this.twitter = new Guna.UI2.WinForms.Guna2Button();
             this.youtube = new Guna.UI2.WinForms.Guna2Button();
             this.discord = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel6 = new System.Windows.Forms.Label();
+            this.guna2HtmlLabel5 = new System.Windows.Forms.Label();
+            this.guna2HtmlLabel4 = new System.Windows.Forms.Label();
+            this.guna2HtmlLabel3 = new System.Windows.Forms.Label();
+            this.guna2HtmlLabel2 = new System.Windows.Forms.Label();
+            this.guna2HtmlLabel1 = new System.Windows.Forms.Label();
             this.DC = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.tt = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             this.animate = new System.Windows.Forms.Timer(this.components);
@@ -315,9 +315,6 @@
             this.guna2HtmlLabel6.Size = new System.Drawing.Size(36, 22);
             this.guna2HtmlLabel6.TabIndex = 5;
             this.guna2HtmlLabel6.Text = "Info : ";
-            this.guna2HtmlLabel6.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.guna2HtmlLabel6.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.guna2HtmlLabel6.UseGdiPlusTextRendering = true;
             // 
             // guna2HtmlLabel5
             // 
@@ -327,12 +324,9 @@
             this.guna2HtmlLabel5.Location = new System.Drawing.Point(12, 173);
             this.guna2HtmlLabel5.Margin = new System.Windows.Forms.Padding(0);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(82, 22);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(117, 22);
             this.guna2HtmlLabel5.TabIndex = 4;
             this.guna2HtmlLabel5.Text = "Version : 0.1";
-            this.guna2HtmlLabel5.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.guna2HtmlLabel5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.guna2HtmlLabel5.UseGdiPlusTextRendering = true;
             // 
             // guna2HtmlLabel4
             // 
@@ -342,12 +336,9 @@
             this.guna2HtmlLabel4.Location = new System.Drawing.Point(12, 151);
             this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(0);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(77, 22);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(117, 22);
             this.guna2HtmlLabel4.TabIndex = 3;
             this.guna2HtmlLabel4.Text = "Build N° : 1";
-            this.guna2HtmlLabel4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.guna2HtmlLabel4.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.guna2HtmlLabel4.UseGdiPlusTextRendering = true;
             // 
             // guna2HtmlLabel3
             // 
@@ -357,12 +348,9 @@
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(12, 129);
             this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(0);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(110, 22);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(117, 22);
             this.guna2HtmlLabel3.TabIndex = 2;
             this.guna2HtmlLabel3.Text = "Inspired By Bolt.";
-            this.guna2HtmlLabel3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.guna2HtmlLabel3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.guna2HtmlLabel3.UseGdiPlusTextRendering = true;
             // 
             // guna2HtmlLabel2
             // 
@@ -374,25 +362,18 @@
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(189, 23);
             this.guna2HtmlLabel2.TabIndex = 1;
-            this.guna2HtmlLabel2.Text = "★★[ By Pickleft#1853 ]★★";
-            this.guna2HtmlLabel2.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.guna2HtmlLabel2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.guna2HtmlLabel2.UseGdiPlusTextRendering = true;
+            this.guna2HtmlLabel2.Text = "★★ By Pickleft#1853 ★★";
             // 
             // guna2HtmlLabel1
             // 
-            this.guna2HtmlLabel1.AvoidGeometryAntialias = true;
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.Control;
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(12, 6);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(155, 88);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(230, 88);
             this.guna2HtmlLabel1.TabIndex = 0;
             this.guna2HtmlLabel1.Text = "Swift.\r\n";
-            this.guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.guna2HtmlLabel1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-            this.guna2HtmlLabel1.UseGdiPlusTextRendering = true;
             // 
             // DC
             // 
@@ -437,11 +418,9 @@
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
             this.Load += new System.EventHandler(this.Menu_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -450,13 +429,13 @@
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private System.Windows.Forms.Label guna2HtmlLabel2;
+        private System.Windows.Forms.Label guna2HtmlLabel1;
+        private System.Windows.Forms.Label guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2Button discord;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
+        private System.Windows.Forms.Label guna2HtmlLabel6;
+        private System.Windows.Forms.Label guna2HtmlLabel5;
+        private System.Windows.Forms.Label guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2Button youtube;
         private Guna.UI2.WinForms.Guna2Button twitter;
         private Guna.UI2.WinForms.Guna2DragControl DC;

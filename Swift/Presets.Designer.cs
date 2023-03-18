@@ -42,6 +42,7 @@
             this.CustomUIbutton = new Guna.UI2.WinForms.Guna2Button();
             this.CustomPresetButton = new Guna.UI2.WinForms.Guna2Button();
             this._presetpanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.UpldCfgBtn = new Guna.UI2.WinForms.Guna2Button();
             this.LoadConfingBtn = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
             this.labeldropmax = new System.Windows.Forms.Label();
@@ -59,6 +60,7 @@
             this.labelboostmax = new System.Windows.Forms.Label();
             this.boostmaxslider = new ColorSlider.ColorSlider();
             this.paneluserinterface = new Guna.UI2.WinForms.Guna2Panel();
+            this.Catmode_Checkbox = new Guna.UI2.WinForms.Guna2CheckBox();
             this.preview_label = new System.Windows.Forms.Label();
             this.previewpanel = new System.Windows.Forms.Panel();
             this.applyui = new Guna.UI2.WinForms.Guna2Button();
@@ -309,6 +311,7 @@
             // _presetpanel
             // 
             this._presetpanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this._presetpanel.Controls.Add(this.UpldCfgBtn);
             this._presetpanel.Controls.Add(this.LoadConfingBtn);
             this._presetpanel.Controls.Add(this.label2);
             this._presetpanel.Controls.Add(this.labeldropmax);
@@ -336,6 +339,32 @@
             this._presetpanel.TabIndex = 3;
             this._presetpanel.Visible = false;
             // 
+            // UpldCfgBtn
+            // 
+            this.UpldCfgBtn.Animated = true;
+            this.UpldCfgBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.UpldCfgBtn.BorderRadius = 12;
+            this.UpldCfgBtn.BorderThickness = 1;
+            this.UpldCfgBtn.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.UpldCfgBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.UpldCfgBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.UpldCfgBtn.CheckedState.Parent = this.UpldCfgBtn;
+            this.UpldCfgBtn.CustomImages.Parent = this.UpldCfgBtn;
+            this.UpldCfgBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(15)))), ((int)(((byte)(15)))));
+            this.UpldCfgBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpldCfgBtn.ForeColor = System.Drawing.Color.White;
+            this.UpldCfgBtn.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.UpldCfgBtn.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.UpldCfgBtn.HoverState.ForeColor = System.Drawing.Color.White;
+            this.UpldCfgBtn.HoverState.Parent = this.UpldCfgBtn;
+            this.UpldCfgBtn.Location = new System.Drawing.Point(100, 176);
+            this.UpldCfgBtn.Name = "UpldCfgBtn";
+            this.UpldCfgBtn.ShadowDecoration.Parent = this.UpldCfgBtn;
+            this.UpldCfgBtn.Size = new System.Drawing.Size(86, 25);
+            this.UpldCfgBtn.TabIndex = 22;
+            this.UpldCfgBtn.Text = "Upload CFG";
+            this.UpldCfgBtn.Click += new System.EventHandler(this.UpldCfgBtn_Click);
+            // 
             // LoadConfingBtn
             // 
             this.LoadConfingBtn.Animated = true;
@@ -354,14 +383,12 @@
             this.LoadConfingBtn.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
             this.LoadConfingBtn.HoverState.ForeColor = System.Drawing.Color.White;
             this.LoadConfingBtn.HoverState.Parent = this.LoadConfingBtn;
-            this.LoadConfingBtn.Location = new System.Drawing.Point(5, 147);
-            this.LoadConfingBtn.Margin = new System.Windows.Forms.Padding(5);
+            this.LoadConfingBtn.Location = new System.Drawing.Point(8, 145);
             this.LoadConfingBtn.Name = "LoadConfingBtn";
             this.LoadConfingBtn.ShadowDecoration.Parent = this.LoadConfingBtn;
             this.LoadConfingBtn.Size = new System.Drawing.Size(86, 25);
             this.LoadConfingBtn.TabIndex = 21;
-            this.LoadConfingBtn.Text = "Load Config";
-            this.LoadConfingBtn.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.LoadConfingBtn.Text = "Load CFG";
             this.LoadConfingBtn.Click += new System.EventHandler(this.LoadConfingBtn_Click);
             // 
             // label2
@@ -369,7 +396,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 182);
+            this.label2.Location = new System.Drawing.Point(6, 188);
             this.label2.Margin = new System.Windows.Forms.Padding(5);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
@@ -381,7 +408,7 @@
             this.labeldropmax.AutoSize = true;
             this.labeldropmax.BackColor = System.Drawing.Color.Transparent;
             this.labeldropmax.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeldropmax.Location = new System.Drawing.Point(6, 74);
+            this.labeldropmax.Location = new System.Drawing.Point(5, 74);
             this.labeldropmax.Margin = new System.Windows.Forms.Padding(5);
             this.labeldropmax.Name = "labeldropmax";
             this.labeldropmax.Size = new System.Drawing.Size(65, 13);
@@ -461,7 +488,7 @@
             this.labelboostmin.AutoSize = true;
             this.labelboostmin.BackColor = System.Drawing.Color.Transparent;
             this.labelboostmin.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelboostmin.Location = new System.Drawing.Point(6, 51);
+            this.labelboostmin.Location = new System.Drawing.Point(5, 51);
             this.labelboostmin.Margin = new System.Windows.Forms.Padding(5);
             this.labelboostmin.Name = "labelboostmin";
             this.labelboostmin.Size = new System.Drawing.Size(68, 13);
@@ -621,7 +648,7 @@
             0,
             0,
             0});
-            this.randomseedslider.Location = new System.Drawing.Point(99, 120);
+            this.randomseedslider.Location = new System.Drawing.Point(98, 120);
             this.randomseedslider.Margin = new System.Windows.Forms.Padding(5);
             this.randomseedslider.Maximum = new decimal(new int[] {
             100,
@@ -676,7 +703,7 @@
             this.labelrandomseed.AutoSize = true;
             this.labelrandomseed.BackColor = System.Drawing.Color.Transparent;
             this.labelrandomseed.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelrandomseed.Location = new System.Drawing.Point(6, 120);
+            this.labelrandomseed.Location = new System.Drawing.Point(5, 120);
             this.labelrandomseed.Margin = new System.Windows.Forms.Padding(5);
             this.labelrandomseed.Name = "labelrandomseed";
             this.labelrandomseed.Size = new System.Drawing.Size(79, 13);
@@ -701,14 +728,13 @@
             this.apply.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
             this.apply.HoverState.ForeColor = System.Drawing.Color.White;
             this.apply.HoverState.Parent = this.apply;
-            this.apply.Location = new System.Drawing.Point(98, 147);
-            this.apply.Margin = new System.Windows.Forms.Padding(5);
+            this.apply.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.apply.Location = new System.Drawing.Point(100, 145);
             this.apply.Name = "apply";
             this.apply.ShadowDecoration.Parent = this.apply;
             this.apply.Size = new System.Drawing.Size(86, 25);
             this.apply.TabIndex = 13;
             this.apply.Text = "Check Seed";
-            this.apply.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.apply.Click += new System.EventHandler(this.apply_Click);
             // 
             // labelchanceboost
@@ -716,7 +742,7 @@
             this.labelchanceboost.AutoSize = true;
             this.labelchanceboost.BackColor = System.Drawing.Color.Transparent;
             this.labelchanceboost.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelchanceboost.Location = new System.Drawing.Point(6, 97);
+            this.labelchanceboost.Location = new System.Drawing.Point(5, 97);
             this.labelchanceboost.Margin = new System.Windows.Forms.Padding(5);
             this.labelchanceboost.Name = "labelchanceboost";
             this.labelchanceboost.Size = new System.Drawing.Size(83, 13);
@@ -741,7 +767,7 @@
             0,
             0,
             0});
-            this.chanceboostslider.Location = new System.Drawing.Point(99, 97);
+            this.chanceboostslider.Location = new System.Drawing.Point(98, 97);
             this.chanceboostslider.Margin = new System.Windows.Forms.Padding(5);
             this.chanceboostslider.Maximum = new decimal(new int[] {
             100,
@@ -796,7 +822,7 @@
             this.labeldripmax.AutoSize = true;
             this.labeldripmax.BackColor = System.Drawing.Color.Transparent;
             this.labeldripmax.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labeldripmax.Location = new System.Drawing.Point(6, 28);
+            this.labeldripmax.Location = new System.Drawing.Point(5, 28);
             this.labeldripmax.Margin = new System.Windows.Forms.Padding(5);
             this.labeldripmax.Name = "labeldripmax";
             this.labeldripmax.Size = new System.Drawing.Size(66, 13);
@@ -876,7 +902,7 @@
             this.labelboostmax.AutoSize = true;
             this.labelboostmax.BackColor = System.Drawing.Color.Transparent;
             this.labelboostmax.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelboostmax.Location = new System.Drawing.Point(6, 5);
+            this.labelboostmax.Location = new System.Drawing.Point(5, 5);
             this.labelboostmax.Margin = new System.Windows.Forms.Padding(5);
             this.labelboostmax.Name = "labelboostmax";
             this.labelboostmax.Size = new System.Drawing.Size(69, 13);
@@ -901,7 +927,7 @@
             0,
             0,
             0});
-            this.boostmaxslider.Location = new System.Drawing.Point(96, 7);
+            this.boostmaxslider.Location = new System.Drawing.Point(98, 5);
             this.boostmaxslider.Margin = new System.Windows.Forms.Padding(5);
             this.boostmaxslider.Maximum = new decimal(new int[] {
             5,
@@ -954,6 +980,7 @@
             // paneluserinterface
             // 
             this.paneluserinterface.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.paneluserinterface.Controls.Add(this.Catmode_Checkbox);
             this.paneluserinterface.Controls.Add(this.preview_label);
             this.paneluserinterface.Controls.Add(this.previewpanel);
             this.paneluserinterface.Controls.Add(this.applyui);
@@ -973,6 +1000,29 @@
             this.paneluserinterface.Size = new System.Drawing.Size(530, 326);
             this.paneluserinterface.TabIndex = 21;
             this.paneluserinterface.Visible = false;
+            // 
+            // Catmode_Checkbox
+            // 
+            this.Catmode_Checkbox.Animated = true;
+            this.Catmode_Checkbox.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.Catmode_Checkbox.CheckedState.BorderRadius = 3;
+            this.Catmode_Checkbox.CheckedState.BorderThickness = 0;
+            this.Catmode_Checkbox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(27)))), ((int)(((byte)(45)))));
+            this.Catmode_Checkbox.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Catmode_Checkbox.Location = new System.Drawing.Point(11, 124);
+            this.Catmode_Checkbox.Margin = new System.Windows.Forms.Padding(1);
+            this.Catmode_Checkbox.Name = "Catmode_Checkbox";
+            this.Catmode_Checkbox.Size = new System.Drawing.Size(122, 20);
+            this.Catmode_Checkbox.TabIndex = 29;
+            this.Catmode_Checkbox.Text = "Cat Mode (?)";
+            this.tt.SetToolTip(this.Catmode_Checkbox, "Indicates Whether You Should Hold Left Click Only Or Multiple Buttons With Left B" +
+        "utton");
+            this.Catmode_Checkbox.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
+            this.Catmode_Checkbox.UncheckedState.BorderRadius = 1;
+            this.Catmode_Checkbox.UncheckedState.BorderThickness = 0;
+            this.Catmode_Checkbox.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
+            this.Catmode_Checkbox.UseVisualStyleBackColor = true;
+            this.Catmode_Checkbox.CheckedChanged += new System.EventHandler(this.Catmode_Checkbox_CheckedChanged);
             // 
             // preview_label
             // 
@@ -1310,7 +1360,6 @@
             this.Name = "Presets";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Presets_FormClosing);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
             this._presetpanel.ResumeLayout(false);
@@ -1365,6 +1414,8 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private Guna.UI2.WinForms.Guna2Button LoadConfingBtn;
+        private Guna.UI2.WinForms.Guna2CheckBox Catmode_Checkbox;
+        private Guna.UI2.WinForms.Guna2Button UpldCfgBtn;
     }
 }
 

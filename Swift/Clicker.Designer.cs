@@ -59,6 +59,7 @@
             this.tt = new Guna.UI2.WinForms.Guna2HtmlToolTip();
             this.animate = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.WindowFinder = new System.Windows.Forms.Timer(this.components);
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
@@ -727,6 +728,12 @@
             this.notifyIcon1.Text = "Swift";
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // WindowFinder
+            // 
+            this.WindowFinder.Enabled = true;
+            this.WindowFinder.Interval = 250;
+            this.WindowFinder.Tick += new System.EventHandler(this.WindowFinder_Tick);
+            // 
             // Clicker
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -741,7 +748,6 @@
             this.Name = "Clicker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Clicker.";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Clicker_FormClosing);
             this.Load += new System.EventHandler(this.Clicker_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel2.ResumeLayout(false);
@@ -784,6 +790,7 @@
         private ColorSlider.ColorSlider Rcpsslider;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Timer WindowFinder;
     }
 }
 

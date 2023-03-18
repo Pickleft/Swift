@@ -1,28 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Diagnostics;
-using static Swift.Calls;
 using System.IO;
 using System.ServiceProcess;
+using System.Windows.Forms;
+using static Swift.Calls;
 
 namespace Swift
 {
     public partial class Destructs : Form
     {
+        #region Properties
         public List<string> preffiles = new List<string>();
-        bool delete;
+        private bool delete;
         public uint dns;
         public List<string> tempfiles = new List<string>();
+        #endregion
+
+        #region Constructor .ctor
         public Destructs()
         {
             InitializeComponent();
         }
+        #endregion
+
+        #region GUI Controls
         private void Preset_Click(object sender, EventArgs e)
         {
             try { restartservice(); } catch { }
-            this.Hide();
-            P.Location = this.Location;
+            Hide();
+            P.Location = Location;
             P.Opacity = 0.3;
             P.Show();
             animate.Start();
@@ -31,8 +38,8 @@ namespace Swift
         private void clicker_Click(object sender, EventArgs e)
         {
             try { restartservice(); } catch { }
-            this.Hide();
-            C.Location = this.Location;
+            Hide();
+            C.Location = Location;
             C.Opacity = 0.3;
             C.Show();
             animate.Start();
@@ -41,8 +48,8 @@ namespace Swift
         private void Home_Click(object sender, EventArgs e)
         {
             try { restartservice(); } catch { }
-            this.Hide();
-            H.Location = this.Location;
+            Hide();
+            H.Location = Location;
             H.Opacity = 0.3;
             H.Show();
             animate.Start();
@@ -82,6 +89,26 @@ namespace Swift
             }
         }
 
+
+        private void Destructs_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            notifyIcon1.Visible = true;
+        }
+        #endregion
+
+        #region Destruct Methods
         private void usgl_CheckedChanged(object sender, EventArgs e)
         {
             usgl.Checked = true;
@@ -91,7 +118,7 @@ namespace Swift
         {
             if (ClearPref.Checked)
             {
-                var dir = Environment.GetFolderPath(Environment.SpecialFolder.Windows) + "\\Prefetch";
+                string dir = Environment.GetFolderPath(Environment.SpecialFolder.Windows) + "\\Prefetch";
                 string[] files = Directory.GetFiles(dir);
                 foreach (string file in files)
                 {
@@ -111,7 +138,7 @@ namespace Swift
         {
             if (temp.Checked)
             {
-                var dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Temp";
+                string dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\Temp";
                 string[] files = Directory.GetFiles(dir);
                 foreach (string file in files)
                 {
@@ -126,45 +153,36 @@ namespace Swift
 
         private void flushd_CheckedChanged(object sender, EventArgs e)
         {
-            if (flushd.Checked)
-            {
-                dns = 1;
-            }
-            else
-            {
-                dns = 0;
-            }
+            dns = flushd.Checked ? 1 : (uint)0;
         }
 
         private void selfdel_CheckedChanged(object sender, EventArgs e)
         {
-            if (selfdel.Checked)
-            {
-                delete = true;
-            }
-            else
-            {
-                delete = false;
-            }
+            delete = selfdel.Checked;
         }
 
         private void Kill_Click(object sender, EventArgs e)
         {
             if (new ServiceController("EventLog").Status == ServiceControllerStatus.Stopped)
             {
-                try
+
+                foreach (string file in tempfiles)
                 {
-                    foreach (var file in tempfiles)
+                    try
                     {
                         File.Delete(file);
                     }
-                    foreach (var file in preffiles)
-                    {
-                        File.Delete(file);
-                    }
+                    catch { }
                 }
-                catch
-                { }
+                foreach (string file in preffiles)
+                {
+                    try
+                    {
+                        File.Delete(file);
+                    }
+                    catch { }
+                }
+
                 if (dns == 1)
                 {
                     DnsFlushResolverCache();
@@ -179,32 +197,10 @@ namespace Swift
                         CreateNoWindow = true
                     });
                 }
-                restartservice();
-                Environment.FailFast("Failed To Parse Int To An Array", new ArgumentException());
+                Close();
             }
 
         }
-
-        private void Destructs_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void Destructs_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Show();
-            this.WindowState = FormWindowState.Normal;
-            notifyIcon1.Visible = false;
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            Hide();
-            notifyIcon1.Visible = true;
-        }
+        #endregion
     }
 }
